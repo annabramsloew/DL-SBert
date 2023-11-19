@@ -8,7 +8,7 @@ class CE_MSELoss(nn.Module):
     By default, sim() is the dot-product. Here we use cosine similarity.
     For more details, please refer to https://arxiv.org/abs/2010.02666.
     """
-    def __init__(self, model, similarity_fct = util.cos_sim):
+    def __init__(self, model, similarity_fct = util.pairwise_cos_sim):
         """
         :param model: SentenceTransformerModel
         :param similarity_fct:  Which similarity function to use.
@@ -23,7 +23,7 @@ class CE_MSELoss(nn.Module):
         reps = [self.model(sentence_feature)['sentence_embedding'] for sentence_feature in sentence_features]
         embeddings_query = reps[0]
         embeddings_pos = reps[1]
-        embeddings_neg = reps[2]
+        #embeddings_neg = reps[2]
 
         scores_pos = self.similarity_fct(embeddings_query, embeddings_pos) 
         #scores_neg = self.similarity_fct(embeddings_query, embeddings_neg)
