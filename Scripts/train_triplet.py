@@ -37,12 +37,12 @@ from TripletLoss import TripletLoss
 
 
 #### Just some code to print debug information to stdout
-logging.basicConfig(format='%(asctime)s - %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S',
-                    level=logging.INFO,
-                    handlers=[LoggingHandler()])
+# logging.basicConfig(format='%(asctime)s - %(message)s',
+#                     datefmt='%Y-%m-%d %H:%M:%S',
+#                     level=logging.INFO,
+#                     handlers=[LoggingHandler()])
 #### /print debug information to stdout
-
+logging.basicConfig(filename='train_siamese.log', filemode='w', format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S', level=logging.INFO)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--train_batch_size", default=64, type=int)
@@ -212,7 +212,7 @@ with gzip.open(hard_negatives_filepath, 'rt') as fIn:
                     negs_added += 1
                     if negs_added >= num_negs_per_system:
                         break
-        print("Got here")
+        #print("Got here")
         if args.use_all_queries or (len(pos_pids) > 0 and len(neg_pids) > 0):
             train_queries[data['qid']] = {'qid': data['qid'], 'query': queries[data['qid']], 'pos': pos_pids, 'neg': neg_pids}
 
