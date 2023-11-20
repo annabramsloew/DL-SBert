@@ -14,6 +14,7 @@ from shutil import copyfile
 import pickle
 import argparse
 from CE_MSELoss import CE_MSELoss
+import numpy as np
 
 
 
@@ -37,7 +38,7 @@ parser.add_argument("--num_negs_per_system", default=5, type=int)
 parser.add_argument("--use_pre_trained_model", default=False, action="store_true")
 parser.add_argument("--use_all_queries", default=False, action="store_true")
 parser.add_argument("--ce_score_margin", default=3.0, type=float)
-parser.add_argument("--evaluation_steps", default=10000, type=float)
+parser.add_argument("--evaluation_steps", default=10000, type=int)
 args = parser.parse_args()
 
 print(args)
@@ -130,6 +131,8 @@ logging.info("Load CrossEncoder scores dict")
 with gzip.open(ce_scores_file, 'rb') as fIn:
     ce_scores = pickle.load(fIn)
 
+def sigmoid_np(x):
+    return 1 / (1 + np.exp(-np.array(x)))
 
 # We create a custom MSMARCO dataset that returns triplets (query, positive, negative)
 # on-the-fly based on the information from the mined-hard-negatives jsonl file.
@@ -156,7 +159,7 @@ class MSMARCODataset(Dataset):
         self.queries_ids = query_ids
         self.passage_ids = passage_ids
         self.corpus = corpus
-        self.ce_scores = ce_scores_list
+        self.ce_scores = [float(number) for number in sigmoid_np(ce_scores_list)]
 
     def __getitem__(self, item):
 

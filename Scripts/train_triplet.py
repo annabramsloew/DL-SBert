@@ -20,7 +20,7 @@ python train_bi-encoder-v3.py
 import sys
 import json
 from torch.utils.data import DataLoader
-from sentence_transformers import SentenceTransformer, LoggingHandler, util, models, evaluation, losses, InputExample
+from sentence_transformer_dtu import SentenceTransformer, util, models, InputExample
 import logging
 from datetime import datetime
 import gzip
@@ -58,6 +58,7 @@ parser.add_argument("--num_negs_per_system", default=5, type=int)
 parser.add_argument("--use_pre_trained_model", default=False, action="store_true")
 parser.add_argument("--use_all_queries", default=False, action="store_true")
 parser.add_argument("--ce_score_margin", default=3.0, type=float)
+parser.add_argument("--evaluation_steps", default=10000, type=int)
 args = parser.parse_args()
 
 # this class replaces the parsing of arguments passed to the .py scripts
@@ -266,6 +267,7 @@ model.fit(train_objectives=[(train_dataloader, train_loss)],
           checkpoint_path=model_save_path,
           checkpoint_save_steps=len(train_dataloader),
           optimizer_params = {'lr': args.lr},
+          evaluation_steps = evaluation_steps
           )
 
 # Save the model

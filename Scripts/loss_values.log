@@ -1,0 +1,10 @@
+20-Nov-23 16:01:42 - Namespace(train_batch_size=8, max_seq_length=300, model_name='distilbert-base-uncased', max_passages=0, epochs=2, pooling='mean', negs_to_use=None, warmup_steps=1000, lr=2e-05, num_negs_per_system=5, use_pre_trained_model=False, use_all_queries=False, ce_score_margin=3.0, evaluation_steps=1000)
+20-Nov-23 16:01:42 - Create new SBERT model
+20-Nov-23 16:01:43 - Use pytorch device: cuda
+20-Nov-23 16:01:43 - Read corpus: collection.tsv
+20-Nov-23 16:01:56 - Load CrossEncoder scores dict
+20-Nov-23 16:02:31 - Loading data
+20-Nov-23 16:03:30 - Length of loss_values: 1000
+20-Nov-23 16:03:30 - Mean loss for training step 1000 :  26.0183172955513
+20-Nov-23 16:04:25 - Length of loss_values: 2000
+20-Nov-23 16:04:25 - Mean loss for training step 2000 :  23.758238729953767
