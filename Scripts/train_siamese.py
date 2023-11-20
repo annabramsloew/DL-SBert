@@ -1,7 +1,7 @@
 import sys
 import json
 from torch.utils.data import DataLoader
-from sentence_transformers import SentenceTransformer, LoggingHandler, util, models, evaluation, losses, InputExample
+from sentence_transformer_dtu import SentenceTransformer, util, models, InputExample
 import logging
 from datetime import datetime
 import gzip
@@ -19,10 +19,7 @@ from CE_MSELoss import CE_MSELoss
 
 
 #### Just some code to print debug information to stdout
-logging.basicConfig(format='%(asctime)s - %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S',
-                    level=logging.INFO,
-                    handlers=[LoggingHandler()])
+logging.basicConfig(filename='train_siamese.log', filemode='w', format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S', level=logging.INFO)
 #### /print debug information to stdout
 
 
@@ -40,6 +37,7 @@ parser.add_argument("--num_negs_per_system", default=5, type=int)
 parser.add_argument("--use_pre_trained_model", default=False, action="store_true")
 parser.add_argument("--use_all_queries", default=False, action="store_true")
 parser.add_argument("--ce_score_margin", default=3.0, type=float)
+parser.add_argument("--evaluation_steps", default=10000, type=float)
 args = parser.parse_args()
 
 print(args)
@@ -132,51 +130,6 @@ logging.info("Load CrossEncoder scores dict")
 with gzip.open(ce_scores_file, 'rb') as fIn:
     ce_scores = pickle.load(fIn)
 
-# # As training data we use hard-negatives that have been mined using various systems
-# hard_negatives_filepath = os.path.join(data_folder, 'msmarco-hard-negatives.jsonl.gz')
-# if not os.path.exists(hard_negatives_filepath):
-#     logging.info("Download cross-encoder scores file")
-#     util.http_get('https://huggingface.co/datasets/sentence-transformers/msmarco-hard-negatives/resolve/main/msmarco-hard-negatives.jsonl.gz', hard_negatives_filepath)
-
-
-#logging.info("Read hard negatives train file")
-# train_queries = {}
-# negs_to_use = None
-# with gzip.open(hard_negatives_filepath, 'rt') as fIn:
-#     for line in tqdm.tqdm(fIn):
-#         if max_passages > 0 and len(train_queries) >= max_passages:
-#             break
-#         data = json.loads(line)
-
-#         #Get the positive passage ids
-#         pos_pids = data['pos']
-
-#         #Get the hard negatives
-#         neg_pids = set()
-#         if negs_to_use is None:
-#             if args.negs_to_use is not None:    #Use specific system for negatives
-#                 negs_to_use = args.negs_to_use.split(",")
-#             else:   #Use all systems
-#                 negs_to_use = list(data['neg'].keys())
-#             logging.info("Using negatives from the following systems:", negs_to_use)
-
-#         for system_name in negs_to_use:
-#             if system_name not in data['neg']:
-#                 continue
-
-#             system_negs = data['neg'][system_name]
-#             negs_added = 0
-#             for pid in system_negs:
-#                 if pid not in neg_pids:
-#                     neg_pids.add(pid)
-#                     negs_added += 1
-#                     if negs_added >= num_negs_per_system:
-#                         break
-
-#         if args.use_all_queries or (len(pos_pids) > 0 and len(neg_pids) > 0):
-#             train_queries[data['qid']] = {'qid': data['qid'], 'query': queries[data['qid']], 'pos': pos_pids, 'neg': neg_pids}
-
-# logging.info("Train queries: {}".format(len(train_queries)))
 
 # We create a custom MSMARCO dataset that returns triplets (query, positive, negative)
 # on-the-fly based on the information from the mined-hard-negatives jsonl file.
@@ -189,7 +142,7 @@ class MSMARCODataset(Dataset):
         ce_scores_list = []
         
         for i, qid in enumerate(ce_scores.keys()):
-            if i > 5000:
+            if i > 100:
                 continue
             passage_dict = ce_scores[qid]
             query_ids += [qid] * len(passage_dict)
@@ -234,6 +187,7 @@ model.fit(train_objectives=[(train_dataloader, train_loss)],
           checkpoint_path=model_save_path,
           checkpoint_save_steps=10000,
           optimizer_params = {'lr': args.lr},
+          evaluation_steps = args.evaluation_steps
           )
 
 # Train latest model

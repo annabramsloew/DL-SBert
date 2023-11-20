@@ -42,7 +42,7 @@ from TripletLoss import TripletLoss
 #                     level=logging.INFO,
 #                     handlers=[LoggingHandler()])
 #### /print debug information to stdout
-logging.basicConfig(filename='train_siamese.log', filemode='w', format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S', level=logging.INFO)
+logging.basicConfig(filename='train_triplet.log', filemode='w', format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S', level=logging.INFO)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--train_batch_size", default=64, type=int)
@@ -163,7 +163,6 @@ if not os.path.exists(hard_negatives_filepath):
     logging.info("Download cross-encoder scores file")
     util.http_get('https://huggingface.co/datasets/sentence-transformers/msmarco-hard-negatives/resolve/main/msmarco-hard-negatives.jsonl.gz', hard_negatives_filepath)
 
-print("hello")
 logging.info("Read hard negatives train file")
 train_queries = {}
 negs_to_use = None
