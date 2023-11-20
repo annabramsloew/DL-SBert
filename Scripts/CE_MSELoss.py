@@ -1,4 +1,4 @@
-from sentence_transformers import util
+from sentence_transformer_dtu import util
 from torch import nn, Tensor
 from typing import Iterable, Dict
 
