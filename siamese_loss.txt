@@ -1,0 +1,28 @@
+2023-11-24 08:20:57,575 - INFO - Mean loss for training step 10000 :  0.09213242784217
+2023-11-24 08:41:23,778 - INFO - Mean loss for training step 20000 :  0.07290426091961563
+2023-11-24 09:01:46,727 - INFO - Mean loss for training step 30000 :  0.06792208584770561
+2023-11-24 09:22:09,440 - INFO - Mean loss for training step 40000 :  0.06445387735255062
+2023-11-24 09:42:31,640 - INFO - Mean loss for training step 50000 :  0.062254079167731104
+2023-11-24 10:02:55,768 - INFO - Mean loss for training step 60000 :  0.060077961442805826
+2023-11-24 10:23:16,274 - INFO - Mean loss for training step 70000 :  0.05874391791317612
+2023-11-24 10:43:39,258 - INFO - Mean loss for training step 80000 :  0.057213384805992244
+2023-11-24 11:04:01,351 - INFO - Mean loss for training step 90000 :  0.0557635231519118
+2023-11-24 11:24:23,746 - INFO - Mean loss for training step 100000 :  0.054795036151073874
+2023-11-24 11:44:45,814 - INFO - Mean loss for training step 110000 :  0.05374263528790325
+2023-11-24 12:05:06,277 - INFO - Mean loss for training step 120000 :  0.05290880488362163
+2023-11-24 12:25:23,246 - INFO - Mean loss for training step 130000 :  0.05202371264752
+2023-11-24 12:27:09,516 - INFO - Mean loss for epoch:  0.06185522441421571
+2023-11-24 12:47:31,584 - INFO - Mean loss for training step 10000 :  0.04656805608700961
+2023-11-24 13:07:51,463 - INFO - Mean loss for training step 20000 :  0.046374825919047
+2023-11-24 13:28:11,357 - INFO - Mean loss for training step 30000 :  0.04604561923500151
+2023-11-24 13:48:31,466 - INFO - Mean loss for training step 40000 :  0.04560899643506855
+2023-11-24 14:08:47,770 - INFO - Mean loss for training step 50000 :  0.04518962548878044
+2023-11-24 14:29:07,633 - INFO - Mean loss for training step 60000 :  0.04478573905341327
+2023-11-24 14:49:29,026 - INFO - Mean loss for training step 70000 :  0.04444388878485188
+2023-11-24 15:09:46,780 - INFO - Mean loss for training step 80000 :  0.04428203940307721
+2023-11-24 15:30:05,442 - INFO - Mean loss for training step 90000 :  0.04393315188996494
+2023-11-24 15:50:25,454 - INFO - Mean loss for training step 100000 :  0.043679580107424405
+2023-11-24 16:10:42,175 - INFO - Mean loss for training step 110000 :  0.0434421243310906
+2023-11-24 16:30:59,526 - INFO - Mean loss for training step 120000 :  0.043164222458563745
+2023-11-24 16:51:18,297 - INFO - Mean loss for training step 130000 :  0.04303728600535542
+2023-11-24 16:53:00,709 - INFO - Mean loss for epoch:  0.04464386451015795
