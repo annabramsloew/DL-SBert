@@ -65,7 +65,7 @@ else:
     pooling_model = models.Pooling(word_embedding_model.get_word_embedding_dimension(), args.pooling)
     model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
 
-model_save_path = f'output/train_bi-encoder-margin_mse-{model_name.replace("/", "-")}-batch_size_{train_batch_size}-{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}'
+model_save_path = f'output/train_siamese_sbert-{model_name.replace("/", "-")}-batch_size_{train_batch_size}-{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}'
 
 
 # Write self to path
@@ -143,9 +143,11 @@ class MSMARCODataset(Dataset):
         query_ids = []
         passage_ids = []
         ce_scores_list = []
-        
+        query_total = len(ce_scores.keys())
+        pct5_threshold = int(query_total*0.05)
+
         for i, qid in enumerate(ce_scores.keys()):
-            if i > 100:
+            if i > pct5_threshold:
                 continue
             passage_dict = ce_scores[qid]
             query_ids += [qid] * len(passage_dict)
@@ -190,11 +192,10 @@ model.fit(train_objectives=[(train_dataloader, train_loss)],
           checkpoint_path=model_save_path,
           checkpoint_save_steps=10000,
           optimizer_params = {'lr': args.lr},
-          evaluation_steps = args.evaluation_steps
+          evaluation_steps = args.evaluation_steps,
+          checkpoint_save_total_limit = 5
           )
 
-# Train latest model
+# save latest model
 model.save(model_save_path)
 
-# Train latest model
-model.save(model_save_path)

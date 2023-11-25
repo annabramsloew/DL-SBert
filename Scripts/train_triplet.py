@@ -97,7 +97,7 @@ word_embedding_model = models.Transformer(model_name, max_seq_length=max_seq_len
 pooling_model = models.Pooling(word_embedding_model.get_word_embedding_dimension(), args.pooling)
 model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
 
-model_save_path = 'output/train_bi-encoder-mnrl-{}-margin_{:.1f}-{}'.format(model_name.replace("/", "-"), ce_score_margin, datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
+model_save_path = 'output/triplet_model-mnrl-{}-margin_{:.1f}-{}'.format(model_name.replace("/", "-"), ce_score_margin, datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
 
 
 ### Now we read the MS Marco dataset
@@ -228,9 +228,14 @@ class MSMARCODataset(Dataset):
     def __init__(self, queries, corpus):
         self.queries = queries
         self.queries_ids = list(queries.keys())
+        query_total = len(queries_ids.keys())
+        pct5_threshold = int(query_total*0.05)
         self.corpus = corpus
+        
 
-        for qid in self.queries:
+        for i, qid in enumerate(self.queries):
+            if i > pct5_threshold:
+                continue
             self.queries[qid]['pos'] = list(self.queries[qid]['pos'])
             self.queries[qid]['neg'] = list(self.queries[qid]['neg'])
             random.shuffle(self.queries[qid]['neg'])
@@ -265,10 +270,11 @@ model.fit(train_objectives=[(train_dataloader, train_loss)],
           warmup_steps=args.warmup_steps,
           use_amp=True,
           checkpoint_path=model_save_path,
-          checkpoint_save_steps=len(train_dataloader),
+          checkpoint_save_steps=10000,
           optimizer_params = {'lr': args.lr},
-          evaluation_steps = evaluation_steps
+          evaluation_steps = 10000,
+          checkpoint_save_total_limit = 5
           )
 
-# Save the model
+# Train latest model
 model.save(model_save_path)
