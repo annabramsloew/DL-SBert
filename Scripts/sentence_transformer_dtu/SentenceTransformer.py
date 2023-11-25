@@ -21,14 +21,30 @@ import queue
 import tempfile
 from distutils.dir_util import copy_tree
 
-from . import __MODEL_HUB_ORGANIZATION__
+#from . import __MODEL_HUB_ORGANIZATION__
 from .evaluation import SentenceEvaluator
 from .util import import_from_string, batch_to_device, fullname, snapshot_download
 from .models import Transformer, Pooling, Dense
 from .model_card_templates import ModelCardTemplate
-from . import __version__
+#from . import __version__
+
 
 logger = logging.getLogger(__name__)
+loss_logger = logging.getLogger("loss_logger")
+# Configure the first logger
+loss_logger = logging.getLogger('logger1')
+loss_logger.setLevel(logging.DEBUG)  # Set the desired logging level
+
+# Create a file handler for logger1
+file_handler1 = logging.FileHandler('log1.txt')
+file_handler1.setLevel(logging.DEBUG)  # Set the desired logging level for this handler
+
+# Create a formatter and add it to the handler
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+file_handler1.setFormatter(formatter)
+
+# Add the handler to the logger
+loss_logger.addHandler(file_handler1)
 
 class SentenceTransformer(nn.Sequential):
     """
@@ -353,12 +369,12 @@ class SentenceTransformer(nn.Sequential):
         modules_config = []
 
         #Save some model info
-        if '__version__' not in self._model_config:
-            self._model_config['__version__'] = {
-                    'sentence_transformers': __version__,
-                    'transformers': transformers.__version__,
-                    'pytorch': torch.__version__,
-                }
+        # if '__version__' not in self._model_config:
+        #     self._model_config['__version__'] = {
+        #             'sentence_transformers': __version__,
+        #             'transformers': transformers.__version__,
+        #             'pytorch': torch.__version__,
+        #         }
 
         with open(os.path.join(path, 'config_sentence_transformers.json'), 'w') as fOut:
             json.dump(self._model_config, fOut, indent=2)
@@ -451,7 +467,7 @@ class SentenceTransformer(nn.Sequential):
         :param train_datasets: Datasets used to train the model. If set, the datasets will be added to the model card in the Hub.
         :return: The url of the commit of your model in the given repository.
         """
-        token = HfFolder.get_token()
+        token = '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'#HfFolder.get_token()
         if token is None:
             raise ValueError("You must login to the Hugging Face hub on this computer by typing `transformers-cli login`.")
 
@@ -683,6 +699,7 @@ class SentenceTransformer(nn.Sequential):
 
         skip_scheduler = False
         for epoch in trange(epochs, desc="Epoch", disable=not show_progress_bar):
+            loss_values = []
             training_steps = 0
 
             for loss_model in loss_models:
@@ -717,11 +734,13 @@ class SentenceTransformer(nn.Sequential):
                         torch.nn.utils.clip_grad_norm_(loss_model.parameters(), max_grad_norm)
                         scaler.step(optimizer)
                         scaler.update()
+                        loss_values.append(loss_value.item())
 
                         skip_scheduler = scaler.get_scale() != scale_before_step
                     else:
                         loss_value = loss_model(features, labels)
                         loss_value.backward()
+                        loss_values.append(loss_value.item())
                         torch.nn.utils.clip_grad_norm_(loss_model.parameters(), max_grad_norm)
                         optimizer.step()
 
@@ -734,11 +753,18 @@ class SentenceTransformer(nn.Sequential):
                 global_step += 1
 
                 if evaluation_steps > 0 and training_steps % evaluation_steps == 0:
-                    self._eval_during_training(evaluator, output_path, save_best_model, epoch, training_steps, callback)
+                    #self._eval_during_training(evaluator, output_path, save_best_model, epoch, training_steps, callback)
 
-                    for loss_model in loss_models:
-                        loss_model.zero_grad()
-                        loss_model.train()
+                    # for loss_model in loss_models:
+                    #     loss_model.zero_grad()
+                    #     loss_model.train()
+                    if training_steps == 0:
+                        #last_eval_step = 0
+                        pass
+                    else:
+                        #loss_logger.info(f"Length of loss_values: {len(loss_values)}")
+                        loss_logger.info(f"Mean loss for training step {training_steps} :  {np.mean(loss_values[-evaluation_steps:])}")
+                        #last_eval_step = last_eval_step + evaluation_steps
 
                 if checkpoint_path is not None and checkpoint_save_steps is not None and checkpoint_save_steps > 0 and global_step % checkpoint_save_steps == 0:
                     self._save_checkpoint(checkpoint_path, checkpoint_save_total_limit, global_step)
@@ -746,11 +772,15 @@ class SentenceTransformer(nn.Sequential):
 
             self._eval_during_training(evaluator, output_path, save_best_model, epoch, -1, callback)
 
+            loss_logger.info(f"Mean loss for epoch:  {np.mean(loss_values)}")
         if evaluator is None and output_path is not None:   #No evaluator, but output path: save final model version
             self.save(output_path)
 
         if checkpoint_path is not None:
             self._save_checkpoint(checkpoint_path, checkpoint_save_total_limit, global_step)
+
+        
+
 
 
 
@@ -819,8 +849,8 @@ class SentenceTransformer(nn.Sequential):
             with open(config_sentence_transformers_json_path) as fIn:
                 self._model_config = json.load(fIn)
 
-            if '__version__' in self._model_config and 'sentence_transformers' in self._model_config['__version__'] and self._model_config['__version__']['sentence_transformers'] > __version__:
-                logger.warning("You try to use a model that was created with version {}, however, your version is {}. This might cause unexpected behavior or errors. In that case, try to update to the latest version.\n\n\n".format(self._model_config['__version__']['sentence_transformers'], __version__))
+            # if '__version__' in self._model_config and 'sentence_transformers' in self._model_config['__version__'] and self._model_config['__version__']['sentence_transformers'] > __version__:
+            #     logger.warning("You try to use a model that was created with version {}, however, your version is {}. This might cause unexpected behavior or errors. In that case, try to update to the latest version.\n\n\n".format(self._model_config['__version__']['sentence_transformers'], __version__))
 
         # Check if a readme exists
         model_card_path = os.path.join(model_path, 'README.md')

@@ -18,6 +18,7 @@ from huggingface_hub import HfApi, hf_hub_url, cached_download, HfFolder
 import fnmatch
 from packaging import version
 import heapq
+import torch.nn.functional as F
 
 logger = logging.getLogger(__name__)
 
@@ -95,7 +96,7 @@ def pairwise_cos_sim(a: Tensor, b: Tensor):
     if not isinstance(b, torch.Tensor):
         b = torch.tensor(b)
 
-    return pairwise_dot_score(normalize_embeddings(a), normalize_embeddings(b))
+    return F.relu(pairwise_dot_score(normalize_embeddings(a), normalize_embeddings(b)))
 
 
 def normalize_embeddings(embeddings: Tensor):
