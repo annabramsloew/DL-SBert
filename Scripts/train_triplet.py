@@ -13,8 +13,6 @@ passages that are actually relevant for the query.
 
 With a distilbert-base-uncased model, it should achieve a performance of about 33.79 MRR@10 on the MSMARCO Passages Dev-Corpus
 
-Running this script:
-python train_bi-encoder-v3.py
 """
 
 import sys
@@ -47,12 +45,12 @@ logging.basicConfig(filename='train_triplet.log', filemode='w', format='%(asctim
 parser = argparse.ArgumentParser()
 parser.add_argument("--train_batch_size", default=64, type=int)
 parser.add_argument("--max_seq_length", default=300, type=int)
-parser.add_argument("--model_name",default="bert-base-uncased")
+parser.add_argument("--model_name",default="distilbert-base-uncased")
 parser.add_argument("--max_passages", default=0, type=int)
 parser.add_argument("--epochs", default=10, type=int)
 parser.add_argument("--pooling", default="mean")
 parser.add_argument("--negs_to_use", default=None, help="From which systems should negatives be used? Multiple systems seperated by comma. None = all")
-parser.add_argument("--warmup_steps", default=1000, type=int)
+parser.add_argument("--warmup_steps", default=0, type=int)
 parser.add_argument("--lr", default=2e-5, type=float)
 parser.add_argument("--num_negs_per_system", default=5, type=int)
 parser.add_argument("--use_pre_trained_model", default=False, action="store_true")
@@ -228,40 +226,54 @@ class MSMARCODataset(Dataset):
     def __init__(self, queries, corpus):
         self.queries = queries
         self.queries_ids = list(queries.keys())
-        query_total = len(queries_ids.keys())
-        pct5_threshold = int(query_total*0.05)
+        #self.pct5_threshold = int(query_total*0.05)
         self.corpus = corpus
         
+        # make list to store the 
+        self.anchors = []
+        self.positives = []
+        self.negatives = []
 
-        for i, qid in enumerate(self.queries):
-            if i > pct5_threshold:
-                continue
-            self.queries[qid]['pos'] = list(self.queries[qid]['pos'])
-            self.queries[qid]['neg'] = list(self.queries[qid]['neg'])
-            random.shuffle(self.queries[qid]['neg'])
+        for qid in self.queries:
+
+            # store the negatives for the positive examples
+            negs = self.queries[qid]['neg']
+            neg_count = len(negs)
+            
+            # only take the first positive (in some cases there are two, but these are disregarded)
+            pos_id = self.queries[qid]['pos'][0]
+            
+            # append same length of anchors, negatives and positives
+            self.anchors += [qid]*neg_count
+            self.positives += [pos_id]*neg_count
+            self.negatives += negs
+                
+            #self.queries[qid]['pos'] = list(self.queries[qid]['pos'])
+            #self.queries[qid]['neg'] = list(self.queries[qid]['neg'])
+            #random.shuffle(self.queries[qid]['neg'])
+        assert len(self.negatives) == len(self.positives)
+        assert len(self.negatives) == len(self.anchors)
+        logging.info(f"Total examples: {len(self.anchors)}")
 
     def __getitem__(self, item):
-        query = self.queries[self.queries_ids[item]]
+        query = self.queries[self.anchors[item]]
         query_text = query['query']
 
-        pos_id = query['pos'].pop(0)    #Pop positive and add at end
+        pos_id = self.positives[item]  
         pos_text = self.corpus[pos_id]
-        query['pos'].append(pos_id)
 
-        neg_id = query['neg'].pop(0)    #Pop negative and add at end
+        neg_id = self.negatives[item]  
         neg_text = self.corpus[neg_id]
-        query['neg'].append(neg_id)
 
         return InputExample(texts=[query_text, pos_text, neg_text])
 
     def __len__(self):
-        return len(self.queries)
-
-
+        return len(self.anchors)
 
 # For training the SentenceTransformer model, we need a dataset, a dataloader, and a loss used for training.
 train_dataset = MSMARCODataset(train_queries, corpus=corpus)
 train_dataloader = DataLoader(train_dataset, shuffle=True, batch_size=train_batch_size)
+assert 1 == 0
 train_loss = TripletLoss(model=model) #brug .TripletLoss()
 
 # Train the model

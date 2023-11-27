@@ -32,7 +32,7 @@ parser.add_argument("--max_passages", default=0, type=int)
 parser.add_argument("--epochs", default=10, type=int)
 parser.add_argument("--pooling", default="mean")
 parser.add_argument("--negs_to_use", default=None, help="From which systems should negatives be used? Multiple systems seperated by comma. None = all")
-parser.add_argument("--warmup_steps", default=1000, type=int)
+parser.add_argument("--warmup_steps", default=0, type=int)
 parser.add_argument("--lr", default=2e-5, type=float)
 parser.add_argument("--num_negs_per_system", default=5, type=int)
 parser.add_argument("--use_pre_trained_model", default=False, action="store_true")
@@ -49,6 +49,7 @@ logging.info(str(args))
 train_batch_size = args.train_batch_size          #Increasing the train batch size improves the model performance, but requires more GPU memory
 model_name = args.model_name
 max_passages = args.max_passages
+ce_score_margin = args.ce_score_margin
 max_seq_length = args.max_seq_length            #Max length for passages. Increasing it, requires more GPU memory
 
 num_negs_per_system = args.num_negs_per_system  # We used different systems to mine hard negatives. Number of hard negatives to add from each system
@@ -134,53 +135,165 @@ with gzip.open(ce_scores_file, 'rb') as fIn:
 def sigmoid_np(x):
     return 1 / (1 + np.exp(-np.array(x)))
 
+logging.info("Read hard negatives train file")
+hard_negatives_filepath = os.path.join(data_folder, 'msmarco-hard-negatives.jsonl.gz')
+train_queries = {}
+negs_to_use = None
+with gzip.open(hard_negatives_filepath, 'rt') as fIn:
+    for line in tqdm.tqdm(fIn):
+        data = json.loads(line)
+
+        #Get the positive passage ids
+
+        qid = data['qid']
+        pos_pids = data['pos']
+
+        #if qid not in unique_qids and pos_pids not in unique_pids:
+          #continue
+
+        if len(pos_pids) == 0:  #Skip entries without positives passages
+            continue
+
+        pos_min_ce_score = min([ce_scores[qid][pid] for pid in data['pos']])
+        ce_score_threshold = pos_min_ce_score - ce_score_margin
+
+        #Get the hard negatives
+        neg_pids = set()
+        if negs_to_use is None:
+            if args.negs_to_use is not None:    #Use specific system for negatives
+                negs_to_use = args.negs_to_use.split(",")
+            else:   #Use all systems
+                negs_to_use = list(data['neg'].keys())
+            logging.info("Using negatives from the following systems: {}".format(", ".join(negs_to_use)))
+
+        for system_name in negs_to_use:
+            if system_name not in data['neg']:
+                continue
+
+            system_negs = data['neg'][system_name]
+            negs_added = 0
+            for pid in system_negs:
+                #if pid not in unique_pids:
+                 #   continue
+
+                if ce_scores[qid][pid] > ce_score_threshold:
+                    continue
+
+                if pid not in neg_pids:
+                    neg_pids.add(pid)
+                    negs_added += 1
+                    if negs_added >= num_negs_per_system:
+                        break
+        #print("Got here")
+        if args.use_all_queries or (len(pos_pids) > 0 and len(neg_pids) > 0):
+            train_queries[data['qid']] = {'qid': data['qid'], 'query': queries[data['qid']], 'pos': pos_pids, 'neg': neg_pids}
+
+#del ce_scores
+
+logging.info("Train queries: {}".format(len(train_queries)))
+
+
+
+# We create a custom MSMARCO dataset that returns triplets (query, positive, negative)
+# on-the-fly based on the information from the mined-hard-negatives jsonl file.
+# class MSMARCODataset(Dataset):
+#     def __init__(self, query_corpus, passage_corpus, ce_scores):
+        
+#         logging.info("Loading data")
+#         query_ids = []
+#         passage_ids = []
+#         ce_scores_list = []
+#         query_total = len(ce_scores.keys())
+#         pct5_threshold = int(query_total*0.05)
+
+#         for i, qid in enumerate(ce_scores.keys()):
+#             if i > pct5_threshold:
+#                 continue
+#             passage_dict = ce_scores[qid]
+#             query_ids += [qid] * len(passage_dict)
+#             for pid in passage_dict:
+#                 passage_ids.append(pid)
+#                 ce_scores_list.append(passage_dict[pid])
+
+#         del ce_scores
+        
+#         self.queries = query_corpus
+#         self.queries_ids = query_ids
+#         self.passage_ids = passage_ids
+#         self.corpus = corpus
+#         self.ce_scores = [float(number) for number in sigmoid_np(ce_scores_list)]
+
+#     def __getitem__(self, item):
+
+#         # fetch relevant items
+#         passage_id = self.passage_ids[item]
+#         query_id = self.queries_ids[item]
+#         score = self.ce_scores[item]
+        
+#         # extract text of passage and queries
+#         query_text = self.queries[query_id]
+#         passage_text = self.corpus[passage_id]
+
+#         return InputExample(texts=[query_text, passage_text], label=score)
+
+#     def __len__(self):
+#         return len(self.passage_ids)
+
+
 # We create a custom MSMARCO dataset that returns triplets (query, positive, negative)
 # on-the-fly based on the information from the mined-hard-negatives jsonl file.
 class MSMARCODataset(Dataset):
-    def __init__(self, query_corpus, passage_corpus, ce_scores):
-        
-        logging.info("Loading data")
-        query_ids = []
-        passage_ids = []
-        ce_scores_list = []
-        query_total = len(ce_scores.keys())
-        pct5_threshold = int(query_total*0.05)
-
-        for i, qid in enumerate(ce_scores.keys()):
-            if i > pct5_threshold:
-                continue
-            passage_dict = ce_scores[qid]
-            query_ids += [qid] * len(passage_dict)
-            for pid in passage_dict:
-                passage_ids.append(pid)
-                ce_scores_list.append(passage_dict[pid])
-
-        del ce_scores
-
-        self.queries = query_corpus
-        self.queries_ids = query_ids
-        self.passage_ids = passage_ids
+    def __init__(self, queries, corpus, ce_scores):
+        self.queries = queries
+        self.queries_ids = list(queries.keys())
         self.corpus = corpus
+        
+        # make list to store the 
+        self.anchors = []
+        self.passages = []
+
+        for qid in self.queries:
+            
+            # add the one positive example ((in some cases there are two, but these are disregarded))
+            pos_id = self.queries[qid]['pos'][0]
+            self.anchors.append(qid)
+            self.passages.append(pos_id)
+
+            # add the many negatives
+            negs = self.queries[qid]['neg']
+            neg_count = len(negs)
+            
+            # append same length of anchors and negative passages
+            self.anchors += [qid]*neg_count
+            self.passages += negs
+                
+        assert len(self.passages) == len(self.anchors)
+        logging.info(f"Total examples: {len(self.anchors)}")
+        print(f"Total examples: {len(self.anchors)}")
+        ce_scores_list = [ce_scores[qid][pid] for qid,pid in zip(self.anchors, self.passages)]
         self.ce_scores = [float(number) for number in sigmoid_np(ce_scores_list)]
 
     def __getitem__(self, item):
+        query = self.queries[self.anchors[item]]
+        query_text = query['query']
 
-        # fetch relevant items
-        passage_id = self.passage_ids[item]
-        query_id = self.queries_ids[item]
-        score = self.ce_scores[item]
-        
-        # extract text of passage and queries
-        query_text = self.queries[query_id]
+        passage_id = self.passages[item]  
         passage_text = self.corpus[passage_id]
+
+        score = self.ce_scores[item]
 
         return InputExample(texts=[query_text, passage_text], label=score)
 
     def __len__(self):
-        return len(self.passage_ids)
+        return len(self.anchors)
+
+
+
+
+
 
 # For training the SentenceTransformer model, we need a dataset, a dataloader, and a loss used for training.
-train_dataset = MSMARCODataset(query_corpus=queries, passage_corpus=corpus, ce_scores=ce_scores)
+train_dataset = MSMARCODataset(queries=train_queries, corpus=corpus, ce_scores=ce_scores)
 train_dataloader = DataLoader(train_dataset, shuffle=True, batch_size=train_batch_size, drop_last=True)
 train_loss = CE_MSELoss(model=model)
 
