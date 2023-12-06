@@ -1,0 +1,70 @@
+05-Dec-23 18:09:25 - Loading model
+05-Dec-23 18:09:25 - /zhome/d2/a/175738/ML_BERT/DL-SBert/Scripts/triplet_euclid
+05-Dec-23 18:09:25 - Load pretrained SentenceTransformer: /zhome/d2/a/175738/ML_BERT/DL-SBert/Scripts/triplet_euclid
+05-Dec-23 18:09:32 - Use pytorch device: cuda
+05-Dec-23 18:09:32 - Model loaded!
+05-Dec-23 18:09:32 - Download 200 evaluation queries
+05-Dec-23 18:09:33 - Data downloaded and stored test queries in dictionary successfully.
+05-Dec-23 18:09:45 - Starting download of Query to relevant corpus mapping.
+05-Dec-23 18:09:46 - Query to relevant corpus mapping downloaded and stored in dictionary successfully.
+05-Dec-23 18:09:46 - Start downloading large passage corpus
+05-Dec-23 18:09:46 - Read corpus: collection.tsv
+05-Dec-23 18:10:03 - Starting Evaluation of the model
+05-Dec-23 18:10:05 - Evaluator made
+05-Dec-23 20:29:20 - Queries: 200
+05-Dec-23 20:29:20 - Corpus: 8841823
+
+05-Dec-23 20:29:21 - Score-Function: cos_sim
+05-Dec-23 20:29:21 - Accuracy@1: 76.50%
+05-Dec-23 20:29:21 - Accuracy@5: 90.50%
+05-Dec-23 20:29:21 - Accuracy@10: 92.00%
+05-Dec-23 20:29:21 - Precision@1: 76.50%
+05-Dec-23 20:29:21 - Precision@5: 64.20%
+05-Dec-23 20:29:21 - Precision@10: 55.90%
+05-Dec-23 20:29:21 - Recall@1: 0.42%
+05-Dec-23 20:29:21 - Recall@5: 1.02%
+05-Dec-23 20:29:21 - Recall@10: 1.35%
+05-Dec-23 20:29:21 - MRR@1: 0.7650
+05-Dec-23 20:29:21 - MRR@5: 0.8196
+05-Dec-23 20:29:21 - MRR@10: 0.8218
+05-Dec-23 20:29:21 - NDCG@1: 0.7650
+05-Dec-23 20:29:21 - NDCG@5: 0.6675
+05-Dec-23 20:29:21 - NDCG@10: 0.6024
+05-Dec-23 20:29:21 - MAP@100: 0.1925
+05-Dec-23 20:29:21 - Score-Function: dot_score
+05-Dec-23 20:29:21 - Accuracy@1: 75.50%
+05-Dec-23 20:29:21 - Accuracy@5: 89.50%
+05-Dec-23 20:29:21 - Accuracy@10: 92.50%
+05-Dec-23 20:29:21 - Precision@1: 75.50%
+05-Dec-23 20:29:21 - Precision@5: 64.00%
+05-Dec-23 20:29:21 - Precision@10: 55.40%
+05-Dec-23 20:29:21 - Recall@1: 0.42%
+05-Dec-23 20:29:21 - Recall@5: 1.02%
+05-Dec-23 20:29:21 - Recall@10: 1.35%
+05-Dec-23 20:29:21 - MRR@1: 0.7550
+05-Dec-23 20:29:21 - MRR@5: 0.8097
+05-Dec-23 20:29:21 - MRR@10: 0.8133
+05-Dec-23 20:29:21 - NDCG@1: 0.7550
+05-Dec-23 20:29:21 - NDCG@5: 0.6630
+05-Dec-23 20:29:21 - NDCG@10: 0.5969
+05-Dec-23 20:29:21 - MAP@100: 0.1910
+05-Dec-23 20:29:21 - Score-Function: neg_euclidian_dist
+05-Dec-23 20:29:21 - Accuracy@1: 76.50%
+05-Dec-23 20:29:21 - Accuracy@5: 90.00%
+05-Dec-23 20:29:21 - Accuracy@10: 92.50%
+05-Dec-23 20:29:21 - Precision@1: 76.50%
+05-Dec-23 20:29:21 - Precision@5: 64.30%
+05-Dec-23 20:29:21 - Precision@10: 56.00%
+05-Dec-23 20:29:21 - Recall@1: 0.42%
+05-Dec-23 20:29:21 - Recall@5: 1.02%
+05-Dec-23 20:29:21 - Recall@10: 1.35%
+05-Dec-23 20:29:21 - MRR@1: 0.7650
+05-Dec-23 20:29:21 - MRR@5: 0.8171
+05-Dec-23 20:29:21 - MRR@10: 0.8206
+05-Dec-23 20:29:21 - NDCG@1: 0.7650
+05-Dec-23 20:29:21 - NDCG@5: 0.6682
+05-Dec-23 20:29:21 - NDCG@10: 0.6033
+05-Dec-23 20:29:21 - MAP@100: 0.1930
+05-Dec-23 20:29:21 - The results for cos_sim is {'accuracy@k': {1: 0.765, 5: 0.905, 10: 0.92}, 'precision@k': {1: 0.765, 5: 0.6419999999999999, 10: 0.5589999999999999}, 'recall@k': {1: 0.0042408336069846096, 5: 0.010200604034513656, 10: 0.013525155517513418}, 'ndcg@k': {1: 0.765, 5: 0.6675126310149183, 10: 0.6024128779087099}, 'mrr@k': {1: 0.765, 5: 0.8195833333333331, 10: 0.821755952380952}, 'map@k': {100: 0.19251276096345243}}
+05-Dec-23 20:29:21 - The results for dot_score is {'accuracy@k': {1: 0.755, 5: 0.895, 10: 0.925}, 'precision@k': {1: 0.755, 5: 0.64, 10: 0.5539999999999999}, 'recall@k': {1: 0.00423083360698461, 5: 0.010178121517031142, 10: 0.013475155517513417}, 'ndcg@k': {1: 0.755, 5: 0.6629847014748345, 10: 0.596891289094748}, 'mrr@k': {1: 0.755, 5: 0.8096666666666665, 10: 0.8132757936507935}, 'map@k': {100: 0.19098448089792747}}
+05-Dec-23 20:29:21 - The results for neg_euclidian_dist is {'accuracy@k': {1: 0.765, 5: 0.9, 10: 0.925}, 'precision@k': {1: 0.765, 5: 0.6430000000000001, 10: 0.56}, 'recall@k': {1: 0.0042408336069846096, 5: 0.010205604034513658, 10: 0.013535155517513418}, 'ndcg@k': {1: 0.765, 5: 0.66816865640248, 10: 0.6033292807248647}, 'mrr@k': {1: 0.765, 5: 0.8170833333333332, 10: 0.8206448412698408}, 'map@k': {100: 0.19295540967956004}}
