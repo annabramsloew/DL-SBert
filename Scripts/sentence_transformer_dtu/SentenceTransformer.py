@@ -36,7 +36,7 @@ loss_logger = logging.getLogger('logger1')
 loss_logger.setLevel(logging.DEBUG)  # Set the desired logging level
 
 # Create a file handler for logger1
-file_handler1 = logging.FileHandler('log1.txt')
+file_handler1 = logging.FileHandler('log2.txt')
 file_handler1.setLevel(logging.DEBUG)  # Set the desired logging level for this handler
 
 # Create a formatter and add it to the handler
@@ -772,7 +772,7 @@ class SentenceTransformer(nn.Sequential):
 
             self._eval_during_training(evaluator, output_path, save_best_model, epoch, -1, callback)
 
-            loss_logger.info(f"Mean loss for epoch:  {np.mean(loss_values)}")
+            #loss_logger.info(f"Mean loss for epoch:  {np.mean(loss_values)}")
         if evaluator is None and output_path is not None:   #No evaluator, but output path: save final model version
             self.save(output_path)
 

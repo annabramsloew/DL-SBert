@@ -233,9 +233,12 @@ class MSMARCODataset(Dataset):
         self.anchors = []
         self.positives = []
         self.negatives = []
-
-        for qid in self.queries:
-
+        
+        MAX_QUERIES = 125000
+        
+        for i, qid in enumerate(self.queries):
+            if i >= MAX_QUERIES:
+                continue
             # store the negatives for the positive examples
             negs = self.queries[qid]['neg']
             neg_count = len(negs)
@@ -273,7 +276,6 @@ class MSMARCODataset(Dataset):
 # For training the SentenceTransformer model, we need a dataset, a dataloader, and a loss used for training.
 train_dataset = MSMARCODataset(train_queries, corpus=corpus)
 train_dataloader = DataLoader(train_dataset, shuffle=True, batch_size=train_batch_size)
-assert 1 == 0
 train_loss = TripletLoss(model=model) #brug .TripletLoss()
 
 # Train the model
@@ -284,7 +286,7 @@ model.fit(train_objectives=[(train_dataloader, train_loss)],
           checkpoint_path=model_save_path,
           checkpoint_save_steps=10000,
           optimizer_params = {'lr': args.lr},
-          evaluation_steps = 10000,
+          evaluation_steps = args.evaluation_steps,
           checkpoint_save_total_limit = 5
           )
 

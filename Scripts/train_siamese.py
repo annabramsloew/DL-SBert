@@ -251,9 +251,10 @@ class MSMARCODataset(Dataset):
         # make list to store the 
         self.anchors = []
         self.passages = []
-
-        for qid in self.queries:
-            
+        MAX_QUERIES = 10000 #125000
+        for i, qid in enumerate(self.queries):
+            if i >= MAX_QUERIES:
+                continue
             # add the one positive example ((in some cases there are two, but these are disregarded))
             pos_id = self.queries[qid]['pos'][0]
             self.anchors.append(qid)
@@ -294,7 +295,7 @@ class MSMARCODataset(Dataset):
 
 # For training the SentenceTransformer model, we need a dataset, a dataloader, and a loss used for training.
 train_dataset = MSMARCODataset(queries=train_queries, corpus=corpus, ce_scores=ce_scores)
-train_dataloader = DataLoader(train_dataset, shuffle=True, batch_size=train_batch_size, drop_last=True)
+train_dataloader = DataLoader(train_dataset, shuffle=True, batch_size=train_batch_size)
 train_loss = CE_MSELoss(model=model)
 
 # Train the model
