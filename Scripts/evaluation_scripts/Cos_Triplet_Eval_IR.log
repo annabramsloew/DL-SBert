@@ -1,0 +1,53 @@
+03-Dec-23 12:12:09 - Loading model
+03-Dec-23 12:12:09 - /zhome/d2/a/175738/ML_BERT/DL-SBert/Scripts/triplet_cosine
+03-Dec-23 12:12:09 - Load pretrained SentenceTransformer: /zhome/d2/a/175738/ML_BERT/DL-SBert/Scripts/triplet_cosine
+03-Dec-23 12:12:15 - Use pytorch device: cuda
+03-Dec-23 12:12:15 - Model loaded!
+03-Dec-23 12:12:15 - Download 200 evaluation queries
+03-Dec-23 12:12:16 - Data downloaded and stored test queries in dictionary successfully.
+03-Dec-23 12:12:31 - Starting download of Query to relevant corpus mapping.
+03-Dec-23 12:12:32 - Query to relevant corpus mapping downloaded and stored in dictionary successfully.
+03-Dec-23 12:12:32 - Start downloading large passage corpus
+03-Dec-23 12:12:32 - Read corpus: collection.tsv
+03-Dec-23 12:12:46 - Starting Evaluation of the model
+03-Dec-23 12:12:46 - length is 8841823
+03-Dec-23 12:12:49 - Evaluator made
+03-Dec-23 14:36:38 - Queries: 200
+03-Dec-23 14:36:38 - Corpus: 8841823
+
+03-Dec-23 14:36:40 - Score-Function: cos_sim
+03-Dec-23 14:36:40 - Accuracy@1: 50.50%
+03-Dec-23 14:36:40 - Accuracy@5: 65.50%
+03-Dec-23 14:36:40 - Accuracy@10: 70.50%
+03-Dec-23 14:36:40 - Precision@1: 50.50%
+03-Dec-23 14:36:40 - Precision@5: 39.30%
+03-Dec-23 14:36:40 - Precision@10: 33.10%
+03-Dec-23 14:36:40 - Recall@1: 0.18%
+03-Dec-23 14:36:40 - Recall@5: 0.50%
+03-Dec-23 14:36:40 - Recall@10: 0.75%
+03-Dec-23 14:36:40 - MRR@1: 0.5050
+03-Dec-23 14:36:40 - MRR@5: 0.5613
+03-Dec-23 14:36:40 - MRR@10: 0.5674
+03-Dec-23 14:36:40 - NDCG@1: 0.5050
+03-Dec-23 14:36:40 - NDCG@5: 0.4167
+03-Dec-23 14:36:40 - NDCG@10: 0.3658
+03-Dec-23 14:36:40 - MAP@100: 0.0681
+03-Dec-23 14:36:40 - Score-Function: dot_score
+03-Dec-23 14:36:40 - Accuracy@1: 8.00%
+03-Dec-23 14:36:40 - Accuracy@5: 14.00%
+03-Dec-23 14:36:40 - Accuracy@10: 18.00%
+03-Dec-23 14:36:40 - Precision@1: 8.00%
+03-Dec-23 14:36:40 - Precision@5: 4.50%
+03-Dec-23 14:36:40 - Precision@10: 4.20%
+03-Dec-23 14:36:40 - Recall@1: 0.01%
+03-Dec-23 14:36:40 - Recall@5: 0.04%
+03-Dec-23 14:36:40 - Recall@10: 0.06%
+03-Dec-23 14:36:40 - MRR@1: 0.0800
+03-Dec-23 14:36:40 - MRR@5: 0.1035
+03-Dec-23 14:36:40 - MRR@10: 0.1087
+03-Dec-23 14:36:40 - NDCG@1: 0.0800
+03-Dec-23 14:36:40 - NDCG@5: 0.0536
+03-Dec-23 14:36:40 - NDCG@10: 0.0484
+03-Dec-23 14:36:40 - MAP@100: 0.0046
+03-Dec-23 14:36:41 - The results for cos_sim is {'accuracy@k': {1: 0.505, 5: 0.655, 10: 0.705}, 'precision@k': {1: 0.505, 5: 0.39299999999999996, 10: 0.331}, 'recall@k': {1: 0.0017823651385161403, 5: 0.004982738852571168, 10: 0.007535816152489125}, 'ndcg@k': {1: 0.505, 5: 0.41673904686338603, 10: 0.3657945540910379}, 'mrr@k': {1: 0.505, 5: 0.56125, 10: 0.5674027777777778}, 'map@k': {100: 0.06813971830524208}}
+03-Dec-23 14:36:41 - The results for dot_score is {'accuracy@k': {1: 0.08, 5: 0.14, 10: 0.18}, 'precision@k': {1: 0.08, 5: 0.045, 10: 0.041999999999999996}, 'recall@k': {1: 8e-05, 5: 0.0003551351351351352, 10: 0.0005501351351351353}, 'ndcg@k': {1: 0.08, 5: 0.05364987448693344, 10: 0.0484395814577541}, 'mrr@k': {1: 0.08, 5: 0.10350000000000001, 10: 0.10865277777777779}, 'map@k': {100: 0.004637731202285112}}
