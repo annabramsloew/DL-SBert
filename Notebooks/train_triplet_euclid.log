@@ -1,0 +1,323 @@
+15-Dec-23 23:15:32 - Create new SBERT model
+15-Dec-23 23:15:53 - Use pytorch device: cuda
+15-Dec-23 23:15:53 - Read corpus: collection.tsv
+15-Dec-23 23:16:35 - Load CrossEncoder scores dict
+15-Dec-23 23:17:22 - Read hard negatives train file
+15-Dec-23 23:17:22 - Using negatives from the following systems: bm25, msmarco-distilbert-base-tas-b, msmarco-distilbert-base-v3, msmarco-MiniLM-L-6-v3, distilbert-margin_mse-cls-dot-v2, distilbert-margin_mse-cls-dot-v1, distilbert-margin_mse-mean-dot-v1, mpnet-margin_mse-mean-v1, co-condenser-margin_mse-cls-v1, distilbert-margin_mse-mnrl-mean-v1, distilbert-margin_mse-sym_mnrl-mean-v1, distilbert-margin_mse-sym_mnrl-mean-v2, co-condenser-margin_mse-sym_mnrl-mean-v1
+15-Dec-23 23:19:33 - Train queries: 499184
+15-Dec-23 23:19:33 - Total examples: 6121901
+15-Dec-23 23:23:36 - Mean loss for training step 1000 :  2.729080980658531
+15-Dec-23 23:27:16 - Mean loss for training step 2000 :  2.186999761223793
+15-Dec-23 23:30:56 - Mean loss for training step 3000 :  1.9659143806695938
+15-Dec-23 23:34:35 - Mean loss for training step 4000 :  1.7899805808067322
+15-Dec-23 23:38:16 - Mean loss for training step 5000 :  1.6405882359147073
+15-Dec-23 23:41:56 - Mean loss for training step 6000 :  1.5211499705910683
+15-Dec-23 23:45:35 - Mean loss for training step 7000 :  1.4011951978802681
+15-Dec-23 23:49:15 - Mean loss for training step 8000 :  1.2876393504738808
+15-Dec-23 23:52:56 - Mean loss for training step 9000 :  1.1833376413881778
+15-Dec-23 23:56:35 - Mean loss for training step 10000 :  1.1149577850699424
+15-Dec-23 23:56:35 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/10000
+16-Dec-23 00:00:18 - Mean loss for training step 11000 :  1.049127637565136
+16-Dec-23 00:03:59 - Mean loss for training step 12000 :  0.9738387855291366
+16-Dec-23 00:07:38 - Mean loss for training step 13000 :  0.9012660654485226
+16-Dec-23 00:11:16 - Mean loss for training step 14000 :  0.8417631494253874
+16-Dec-23 00:14:55 - Mean loss for training step 15000 :  0.7950536142289638
+16-Dec-23 00:18:34 - Mean loss for training step 16000 :  0.7485693833976984
+16-Dec-23 00:22:11 - Mean loss for training step 17000 :  0.7053719868659973
+16-Dec-23 00:25:48 - Mean loss for training step 18000 :  0.6649258632361889
+16-Dec-23 00:29:27 - Mean loss for training step 19000 :  0.6216009549498558
+16-Dec-23 00:33:03 - Mean loss for training step 20000 :  0.5924555471390486
+16-Dec-23 00:33:03 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/20000
+16-Dec-23 00:36:43 - Mean loss for training step 21000 :  0.5642817928045988
+16-Dec-23 00:40:21 - Mean loss for training step 22000 :  0.5317996305972338
+16-Dec-23 00:43:58 - Mean loss for training step 23000 :  0.49957143111526964
+16-Dec-23 00:47:35 - Mean loss for training step 24000 :  0.4872243665009737
+16-Dec-23 00:51:14 - Mean loss for training step 25000 :  0.4629186277538538
+16-Dec-23 00:54:51 - Mean loss for training step 26000 :  0.439416725859046
+16-Dec-23 00:58:29 - Mean loss for training step 27000 :  0.4136768743619323
+16-Dec-23 01:02:07 - Mean loss for training step 28000 :  0.3981074585467577
+16-Dec-23 01:05:47 - Mean loss for training step 29000 :  0.3895486382991076
+16-Dec-23 01:09:26 - Mean loss for training step 30000 :  0.36926612371206285
+16-Dec-23 01:09:26 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/30000
+16-Dec-23 01:13:07 - Mean loss for training step 31000 :  0.3583088538497686
+16-Dec-23 01:16:45 - Mean loss for training step 32000 :  0.3363806251436472
+16-Dec-23 01:20:23 - Mean loss for training step 33000 :  0.32822075112164023
+16-Dec-23 01:24:00 - Mean loss for training step 34000 :  0.31977011282742024
+16-Dec-23 01:27:37 - Mean loss for training step 35000 :  0.3048688250556588
+16-Dec-23 01:31:14 - Mean loss for training step 36000 :  0.29630568574368954
+16-Dec-23 01:34:51 - Mean loss for training step 37000 :  0.28256009647250174
+16-Dec-23 01:38:30 - Mean loss for training step 38000 :  0.28448470801115033
+16-Dec-23 01:42:07 - Mean loss for training step 39000 :  0.2611972372233868
+16-Dec-23 01:45:46 - Mean loss for training step 40000 :  0.25393075289577244
+16-Dec-23 01:45:46 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/40000
+16-Dec-23 01:49:30 - Mean loss for training step 41000 :  0.24871131739765406
+16-Dec-23 01:53:08 - Mean loss for training step 42000 :  0.23705027948319912
+16-Dec-23 01:56:47 - Mean loss for training step 43000 :  0.23661545914411544
+16-Dec-23 02:00:25 - Mean loss for training step 44000 :  0.2275573281943798
+16-Dec-23 02:04:03 - Mean loss for training step 45000 :  0.2271969735920429
+16-Dec-23 02:07:41 - Mean loss for training step 46000 :  0.21495095479488374
+16-Dec-23 02:11:18 - Mean loss for training step 47000 :  0.2133270956799388
+16-Dec-23 02:14:53 - Mean loss for training step 48000 :  0.201982072904706
+16-Dec-23 02:18:29 - Mean loss for training step 49000 :  0.1996082667261362
+16-Dec-23 02:22:05 - Mean loss for training step 50000 :  0.19836291157454253
+16-Dec-23 02:22:05 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/50000
+16-Dec-23 02:25:44 - Mean loss for training step 51000 :  0.18451740230619906
+16-Dec-23 02:29:20 - Mean loss for training step 52000 :  0.18636747221648692
+16-Dec-23 02:32:56 - Mean loss for training step 53000 :  0.17707475310564041
+16-Dec-23 02:36:33 - Mean loss for training step 54000 :  0.17299499478936195
+16-Dec-23 02:40:08 - Mean loss for training step 55000 :  0.17184232374280692
+16-Dec-23 02:43:43 - Mean loss for training step 56000 :  0.1609779192134738
+16-Dec-23 02:47:19 - Mean loss for training step 57000 :  0.15972951467335225
+16-Dec-23 02:50:54 - Mean loss for training step 58000 :  0.15932552728801966
+16-Dec-23 02:54:30 - Mean loss for training step 59000 :  0.1523293464332819
+16-Dec-23 02:58:07 - Mean loss for training step 60000 :  0.15007487000524997
+16-Dec-23 02:58:07 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/60000
+16-Dec-23 03:01:44 - Mean loss for training step 61000 :  0.14701897217333318
+16-Dec-23 03:05:20 - Mean loss for training step 62000 :  0.14739058876037597
+16-Dec-23 03:08:56 - Mean loss for training step 63000 :  0.14473696157336235
+16-Dec-23 03:12:32 - Mean loss for training step 64000 :  0.1403373186737299
+16-Dec-23 03:16:07 - Mean loss for training step 65000 :  0.13623658438771963
+16-Dec-23 03:19:43 - Mean loss for training step 66000 :  0.13309840060025455
+16-Dec-23 03:23:19 - Mean loss for training step 67000 :  0.13073701889812947
+16-Dec-23 03:26:55 - Mean loss for training step 68000 :  0.1332988434880972
+16-Dec-23 03:30:31 - Mean loss for training step 69000 :  0.12378231336176396
+16-Dec-23 03:34:07 - Mean loss for training step 70000 :  0.11908297404646874
+16-Dec-23 03:34:07 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/70000
+16-Dec-23 03:37:45 - Mean loss for training step 71000 :  0.1240378815382719
+16-Dec-23 03:41:20 - Mean loss for training step 72000 :  0.12606207475066186
+16-Dec-23 03:44:56 - Mean loss for training step 73000 :  0.11485709734261036
+16-Dec-23 03:48:32 - Mean loss for training step 74000 :  0.1138635720461607
+16-Dec-23 03:52:06 - Mean loss for training step 75000 :  0.1134222616404295
+16-Dec-23 03:55:42 - Mean loss for training step 76000 :  0.11129092279821634
+16-Dec-23 03:59:18 - Mean loss for training step 77000 :  0.11019244977831841
+16-Dec-23 04:02:54 - Mean loss for training step 78000 :  0.10747833676636219
+16-Dec-23 04:06:29 - Mean loss for training step 79000 :  0.10612715451419354
+16-Dec-23 04:10:05 - Mean loss for training step 80000 :  0.10104196985065937
+16-Dec-23 04:10:05 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/80000
+16-Dec-23 04:13:43 - Mean loss for training step 81000 :  0.10375996463000775
+16-Dec-23 04:17:18 - Mean loss for training step 82000 :  0.09864660042524338
+16-Dec-23 04:20:53 - Mean loss for training step 83000 :  0.10167233897745609
+16-Dec-23 04:24:30 - Mean loss for training step 84000 :  0.09596636474132537
+16-Dec-23 04:28:06 - Mean loss for training step 85000 :  0.09671446422487498
+16-Dec-23 04:31:42 - Mean loss for training step 86000 :  0.09284470798075199
+16-Dec-23 04:35:18 - Mean loss for training step 87000 :  0.09269993177056313
+16-Dec-23 04:38:54 - Mean loss for training step 88000 :  0.09219902105629445
+16-Dec-23 04:42:28 - Mean loss for training step 89000 :  0.09094404543191195
+16-Dec-23 04:46:04 - Mean loss for training step 90000 :  0.0853504657894373
+16-Dec-23 04:46:04 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/90000
+16-Dec-23 04:49:42 - Mean loss for training step 91000 :  0.08474954074621201
+16-Dec-23 04:53:16 - Mean loss for training step 92000 :  0.08930555227398872
+16-Dec-23 04:56:52 - Mean loss for training step 93000 :  0.08405143576860429
+16-Dec-23 05:00:28 - Mean loss for training step 94000 :  0.08928187413513661
+16-Dec-23 05:04:03 - Mean loss for training step 95000 :  0.07845115479826927
+16-Dec-23 05:10:02 - Mean loss for training step 1000 :  0.0571007414907217
+16-Dec-23 05:13:39 - Mean loss for training step 2000 :  0.05579446847736835
+16-Dec-23 05:17:14 - Mean loss for training step 3000 :  0.05699894766509533
+16-Dec-23 05:20:50 - Mean loss for training step 4000 :  0.05559234911203385
+16-Dec-23 05:22:04 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/100000
+16-Dec-23 05:24:28 - Mean loss for training step 5000 :  0.05791730357706547
+16-Dec-23 05:28:05 - Mean loss for training step 6000 :  0.0542689528465271
+16-Dec-23 05:31:40 - Mean loss for training step 7000 :  0.05437121880054474
+16-Dec-23 05:35:15 - Mean loss for training step 8000 :  0.05669134299457073
+16-Dec-23 05:38:50 - Mean loss for training step 9000 :  0.054939699068665505
+16-Dec-23 05:42:25 - Mean loss for training step 10000 :  0.05420119993388653
+16-Dec-23 05:46:00 - Mean loss for training step 11000 :  0.053720064029097556
+16-Dec-23 05:49:36 - Mean loss for training step 12000 :  0.05266633850336075
+16-Dec-23 05:53:11 - Mean loss for training step 13000 :  0.05283405371010304
+16-Dec-23 05:56:47 - Mean loss for training step 14000 :  0.05060682833194732
+16-Dec-23 05:58:01 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/110000
+16-Dec-23 06:00:25 - Mean loss for training step 15000 :  0.051184856832027434
+16-Dec-23 06:04:00 - Mean loss for training step 16000 :  0.052470496982336044
+16-Dec-23 06:07:36 - Mean loss for training step 17000 :  0.050210906460881236
+16-Dec-23 06:11:10 - Mean loss for training step 18000 :  0.04962134708464146
+16-Dec-23 06:14:46 - Mean loss for training step 19000 :  0.0488688218742609
+16-Dec-23 06:18:22 - Mean loss for training step 20000 :  0.049966515347361566
+16-Dec-23 06:21:56 - Mean loss for training step 21000 :  0.05043012823164463
+16-Dec-23 06:25:33 - Mean loss for training step 22000 :  0.04820087480545044
+16-Dec-23 06:29:08 - Mean loss for training step 23000 :  0.04894534708559513
+16-Dec-23 06:32:43 - Mean loss for training step 24000 :  0.04539581868052483
+16-Dec-23 06:33:58 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/120000
+16-Dec-23 06:36:20 - Mean loss for training step 25000 :  0.04582518585026264
+16-Dec-23 06:39:57 - Mean loss for training step 26000 :  0.0428207665681839
+16-Dec-23 06:43:32 - Mean loss for training step 27000 :  0.0452225698530674
+16-Dec-23 06:47:07 - Mean loss for training step 28000 :  0.04575372323393822
+16-Dec-23 06:50:41 - Mean loss for training step 29000 :  0.045975101441144944
+16-Dec-23 06:54:16 - Mean loss for training step 30000 :  0.04310062356293201
+16-Dec-23 06:57:51 - Mean loss for training step 31000 :  0.04555633793771267
+16-Dec-23 07:01:27 - Mean loss for training step 32000 :  0.04408080013096333
+16-Dec-23 07:05:03 - Mean loss for training step 33000 :  0.042646759495139124
+16-Dec-23 07:08:38 - Mean loss for training step 34000 :  0.042159588187932966
+16-Dec-23 07:09:53 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/130000
+16-Dec-23 07:12:17 - Mean loss for training step 35000 :  0.04260681313276291
+16-Dec-23 07:15:52 - Mean loss for training step 36000 :  0.041054526075720785
+16-Dec-23 07:19:28 - Mean loss for training step 37000 :  0.03948167139291763
+16-Dec-23 07:23:03 - Mean loss for training step 38000 :  0.04089872086048126
+16-Dec-23 07:26:39 - Mean loss for training step 39000 :  0.04109284819662571
+16-Dec-23 07:30:13 - Mean loss for training step 40000 :  0.03997334396839142
+16-Dec-23 07:33:47 - Mean loss for training step 41000 :  0.03939727202057838
+16-Dec-23 07:37:22 - Mean loss for training step 42000 :  0.038321982249617574
+16-Dec-23 07:40:57 - Mean loss for training step 43000 :  0.03863096648454666
+16-Dec-23 07:44:33 - Mean loss for training step 44000 :  0.03828622455894947
+16-Dec-23 07:45:47 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/140000
+16-Dec-23 07:48:11 - Mean loss for training step 45000 :  0.0381708527803421
+16-Dec-23 07:51:47 - Mean loss for training step 46000 :  0.036205538511276246
+16-Dec-23 07:55:22 - Mean loss for training step 47000 :  0.03845005552470684
+16-Dec-23 07:58:58 - Mean loss for training step 48000 :  0.03659884797036648
+16-Dec-23 08:02:35 - Mean loss for training step 49000 :  0.03541862395405769
+16-Dec-23 08:06:11 - Mean loss for training step 50000 :  0.03542460981011391
+16-Dec-23 08:09:46 - Mean loss for training step 51000 :  0.034576184317469595
+16-Dec-23 08:13:21 - Mean loss for training step 52000 :  0.03778216384351254
+16-Dec-23 08:16:58 - Mean loss for training step 53000 :  0.03582026796042919
+16-Dec-23 08:20:34 - Mean loss for training step 54000 :  0.033350266456604
+16-Dec-23 08:21:48 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/150000
+16-Dec-23 08:24:10 - Mean loss for training step 55000 :  0.03477922157943249
+16-Dec-23 08:27:45 - Mean loss for training step 56000 :  0.03206266696751118
+16-Dec-23 08:31:21 - Mean loss for training step 57000 :  0.03265082275867462
+16-Dec-23 08:34:56 - Mean loss for training step 58000 :  0.03195000277459621
+16-Dec-23 08:38:33 - Mean loss for training step 59000 :  0.032896520242094995
+16-Dec-23 08:42:08 - Mean loss for training step 60000 :  0.03241783490777016
+16-Dec-23 08:45:43 - Mean loss for training step 61000 :  0.02883177776634693
+16-Dec-23 08:49:19 - Mean loss for training step 62000 :  0.033261402636766434
+16-Dec-23 08:52:55 - Mean loss for training step 63000 :  0.03337866269052028
+16-Dec-23 08:56:32 - Mean loss for training step 64000 :  0.030643659040331842
+16-Dec-23 08:57:45 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/160000
+16-Dec-23 09:00:09 - Mean loss for training step 65000 :  0.029816480815410613
+16-Dec-23 09:03:45 - Mean loss for training step 66000 :  0.031195828035473824
+16-Dec-23 09:07:19 - Mean loss for training step 67000 :  0.03154964439570904
+16-Dec-23 09:10:53 - Mean loss for training step 68000 :  0.03140872272849083
+16-Dec-23 09:14:28 - Mean loss for training step 69000 :  0.032117127209901807
+16-Dec-23 09:18:03 - Mean loss for training step 70000 :  0.02952056793868542
+16-Dec-23 09:21:39 - Mean loss for training step 71000 :  0.027029144793748856
+16-Dec-23 09:25:14 - Mean loss for training step 72000 :  0.028205998748540878
+16-Dec-23 09:28:50 - Mean loss for training step 73000 :  0.027893921867012977
+16-Dec-23 09:32:26 - Mean loss for training step 74000 :  0.02878675626218319
+16-Dec-23 09:33:39 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/170000
+16-Dec-23 09:36:02 - Mean loss for training step 75000 :  0.027575614392757415
+16-Dec-23 09:39:37 - Mean loss for training step 76000 :  0.03027702060341835
+16-Dec-23 09:43:13 - Mean loss for training step 77000 :  0.028957599103450776
+16-Dec-23 09:46:48 - Mean loss for training step 78000 :  0.026464128762483597
+16-Dec-23 09:50:23 - Mean loss for training step 79000 :  0.027917152017354965
+16-Dec-23 09:53:58 - Mean loss for training step 80000 :  0.026982784435153007
+16-Dec-23 09:57:35 - Mean loss for training step 81000 :  0.02677166149020195
+16-Dec-23 10:01:08 - Mean loss for training step 82000 :  0.02578509497642517
+16-Dec-23 10:04:42 - Mean loss for training step 83000 :  0.024882285103201868
+16-Dec-23 10:08:18 - Mean loss for training step 84000 :  0.025563084319233896
+16-Dec-23 10:09:32 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/180000
+16-Dec-23 10:11:57 - Mean loss for training step 85000 :  0.02742477075755596
+16-Dec-23 10:15:31 - Mean loss for training step 86000 :  0.02898145155608654
+16-Dec-23 10:19:09 - Mean loss for training step 87000 :  0.025400461107492448
+16-Dec-23 10:22:48 - Mean loss for training step 88000 :  0.025890724763274194
+16-Dec-23 10:26:26 - Mean loss for training step 89000 :  0.02235046000778675
+16-Dec-23 10:30:04 - Mean loss for training step 90000 :  0.023933935210108757
+16-Dec-23 10:33:43 - Mean loss for training step 91000 :  0.023648319885134696
+16-Dec-23 10:37:20 - Mean loss for training step 92000 :  0.02502342602610588
+16-Dec-23 10:40:58 - Mean loss for training step 93000 :  0.02396339491009712
+16-Dec-23 10:44:35 - Mean loss for training step 94000 :  0.023860512092709542
+16-Dec-23 10:45:50 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/190000
+16-Dec-23 10:48:15 - Mean loss for training step 95000 :  0.022597279667854308
+16-Dec-23 10:54:16 - Mean loss for training step 1000 :  0.014684564754366875
+16-Dec-23 10:57:55 - Mean loss for training step 2000 :  0.015991466134786605
+16-Dec-23 11:01:35 - Mean loss for training step 3000 :  0.014792305812239647
+16-Dec-23 11:05:13 - Mean loss for training step 4000 :  0.01490998473763466
+16-Dec-23 11:08:51 - Mean loss for training step 5000 :  0.01514104463160038
+16-Dec-23 11:12:29 - Mean loss for training step 6000 :  0.015081427156925202
+16-Dec-23 11:16:08 - Mean loss for training step 7000 :  0.01416330149769783
+16-Dec-23 11:19:46 - Mean loss for training step 8000 :  0.015117968052625656
+16-Dec-23 11:22:17 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/200000
+16-Dec-23 11:23:28 - Mean loss for training step 9000 :  0.015465442448854446
+16-Dec-23 11:27:07 - Mean loss for training step 10000 :  0.01568553525209427
+16-Dec-23 11:30:47 - Mean loss for training step 11000 :  0.014039530724287033
+16-Dec-23 11:34:26 - Mean loss for training step 12000 :  0.014661967411637306
+16-Dec-23 11:38:04 - Mean loss for training step 13000 :  0.014078003019094468
+16-Dec-23 11:41:43 - Mean loss for training step 14000 :  0.015173345997929574
+16-Dec-23 11:45:19 - Mean loss for training step 15000 :  0.015275559663772583
+16-Dec-23 11:48:55 - Mean loss for training step 16000 :  0.0152551049888134
+16-Dec-23 11:52:33 - Mean loss for training step 17000 :  0.014278250366449356
+16-Dec-23 11:56:09 - Mean loss for training step 18000 :  0.013773808002471924
+16-Dec-23 11:58:38 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/210000
+16-Dec-23 11:59:48 - Mean loss for training step 19000 :  0.015077942788600921
+16-Dec-23 12:03:26 - Mean loss for training step 20000 :  0.014382850363850593
+16-Dec-23 12:07:04 - Mean loss for training step 21000 :  0.013780644625425338
+16-Dec-23 12:10:42 - Mean loss for training step 22000 :  0.013951099410653114
+16-Dec-23 12:14:19 - Mean loss for training step 23000 :  0.013232635468244552
+16-Dec-23 12:17:55 - Mean loss for training step 24000 :  0.012631918609142303
+16-Dec-23 12:21:31 - Mean loss for training step 25000 :  0.014448054522275924
+16-Dec-23 12:25:08 - Mean loss for training step 26000 :  0.013371305480599404
+16-Dec-23 12:28:45 - Mean loss for training step 27000 :  0.01373495900630951
+16-Dec-23 12:32:21 - Mean loss for training step 28000 :  0.013456290021538735
+16-Dec-23 12:34:51 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/220000
+16-Dec-23 12:36:02 - Mean loss for training step 29000 :  0.014149536430835724
+16-Dec-23 12:39:38 - Mean loss for training step 30000 :  0.012354647159576416
+16-Dec-23 12:43:15 - Mean loss for training step 31000 :  0.01305444185435772
+16-Dec-23 12:46:54 - Mean loss for training step 32000 :  0.012398697659373284
+16-Dec-23 12:50:34 - Mean loss for training step 33000 :  0.013788264766335488
+16-Dec-23 12:54:13 - Mean loss for training step 34000 :  0.012456439957022667
+16-Dec-23 12:57:52 - Mean loss for training step 35000 :  0.01273933644592762
+16-Dec-23 13:01:32 - Mean loss for training step 36000 :  0.01144896438717842
+16-Dec-23 13:05:10 - Mean loss for training step 37000 :  0.012496053412556649
+16-Dec-23 13:08:47 - Mean loss for training step 38000 :  0.011589918911457062
+16-Dec-23 13:11:18 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/230000
+16-Dec-23 13:12:29 - Mean loss for training step 39000 :  0.012176167577505111
+16-Dec-23 13:16:08 - Mean loss for training step 40000 :  0.011544670715928077
+16-Dec-23 13:19:46 - Mean loss for training step 41000 :  0.012051238134503364
+16-Dec-23 13:23:25 - Mean loss for training step 42000 :  0.011786597415804862
+16-Dec-23 13:27:02 - Mean loss for training step 43000 :  0.01191700391471386
+16-Dec-23 13:30:40 - Mean loss for training step 44000 :  0.011552239745855331
+16-Dec-23 13:34:17 - Mean loss for training step 45000 :  0.010253936007618904
+16-Dec-23 13:37:56 - Mean loss for training step 46000 :  0.011526949495077134
+16-Dec-23 13:41:32 - Mean loss for training step 47000 :  0.01074872624874115
+16-Dec-23 13:45:12 - Mean loss for training step 48000 :  0.010736734881997109
+16-Dec-23 13:47:42 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/240000
+16-Dec-23 13:48:52 - Mean loss for training step 49000 :  0.011329998284578324
+16-Dec-23 13:52:30 - Mean loss for training step 50000 :  0.009777115657925606
+16-Dec-23 13:56:08 - Mean loss for training step 51000 :  0.011669790640473366
+16-Dec-23 13:59:47 - Mean loss for training step 52000 :  0.010961784482002258
+16-Dec-23 14:03:26 - Mean loss for training step 53000 :  0.010770790785551071
+16-Dec-23 14:07:06 - Mean loss for training step 54000 :  0.010813386544585229
+16-Dec-23 14:10:45 - Mean loss for training step 55000 :  0.011690668851137162
+16-Dec-23 14:14:23 - Mean loss for training step 56000 :  0.009953394785523415
+16-Dec-23 14:18:01 - Mean loss for training step 57000 :  0.009590947896242142
+16-Dec-23 14:21:39 - Mean loss for training step 58000 :  0.008708168298006058
+16-Dec-23 14:24:11 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/250000
+16-Dec-23 14:25:22 - Mean loss for training step 59000 :  0.010288107082247734
+16-Dec-23 14:28:59 - Mean loss for training step 60000 :  0.010531201764941215
+16-Dec-23 14:32:39 - Mean loss for training step 61000 :  0.009685237944126129
+16-Dec-23 14:36:16 - Mean loss for training step 62000 :  0.01040183487534523
+16-Dec-23 14:39:55 - Mean loss for training step 63000 :  0.009608196824789047
+16-Dec-23 14:43:33 - Mean loss for training step 64000 :  0.009385918378829955
+16-Dec-23 14:47:12 - Mean loss for training step 65000 :  0.009493403732776642
+16-Dec-23 14:50:51 - Mean loss for training step 66000 :  0.01025831438601017
+16-Dec-23 14:54:30 - Mean loss for training step 67000 :  0.008514510869979858
+16-Dec-23 14:58:08 - Mean loss for training step 68000 :  0.010104530557990075
+16-Dec-23 15:00:38 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/260000
+16-Dec-23 15:01:49 - Mean loss for training step 69000 :  0.008784091517329217
+16-Dec-23 15:05:28 - Mean loss for training step 70000 :  0.009342696473002433
+16-Dec-23 15:09:06 - Mean loss for training step 71000 :  0.010277379855513573
+16-Dec-23 15:12:46 - Mean loss for training step 72000 :  0.00789968079328537
+16-Dec-23 15:16:25 - Mean loss for training step 73000 :  0.010299745857715606
+16-Dec-23 15:20:04 - Mean loss for training step 74000 :  0.008302212715148926
+16-Dec-23 15:23:42 - Mean loss for training step 75000 :  0.008706600546836854
+16-Dec-23 15:27:21 - Mean loss for training step 76000 :  0.007854935765266418
+16-Dec-23 15:30:59 - Mean loss for training step 77000 :  0.008104315236210823
+16-Dec-23 15:34:38 - Mean loss for training step 78000 :  0.008404753252863884
+16-Dec-23 15:37:08 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/270000
+16-Dec-23 15:38:19 - Mean loss for training step 79000 :  0.009338980734348298
+16-Dec-23 15:41:57 - Mean loss for training step 80000 :  0.007542559459805489
+16-Dec-23 15:45:36 - Mean loss for training step 81000 :  0.008759147375822068
+16-Dec-23 15:49:14 - Mean loss for training step 82000 :  0.008072594165802001
+16-Dec-23 15:52:52 - Mean loss for training step 83000 :  0.008204557955265045
+16-Dec-23 15:56:31 - Mean loss for training step 84000 :  0.008204896196722985
+16-Dec-23 16:00:10 - Mean loss for training step 85000 :  0.007723322361707688
+16-Dec-23 16:03:48 - Mean loss for training step 86000 :  0.008371030315756797
+16-Dec-23 16:07:28 - Mean loss for training step 87000 :  0.008264636024832725
+16-Dec-23 16:11:06 - Mean loss for training step 88000 :  0.007769473150372505
+16-Dec-23 16:13:37 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/280000
+16-Dec-23 16:14:47 - Mean loss for training step 89000 :  0.007870557054877282
+16-Dec-23 16:18:25 - Mean loss for training step 90000 :  0.00878388161957264
+16-Dec-23 16:22:04 - Mean loss for training step 91000 :  0.007845519706606865
+16-Dec-23 16:25:42 - Mean loss for training step 92000 :  0.0064635914713144305
+16-Dec-23 16:29:20 - Mean loss for training step 93000 :  0.007485952615737915
+16-Dec-23 16:32:59 - Mean loss for training step 94000 :  0.008015398353338242
+16-Dec-23 16:36:39 - Mean loss for training step 95000 :  0.007747150227427483
+16-Dec-23 16:39:03 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53/286965
+16-Dec-23 16:39:05 - Save model to output/triplet_model-mnrl-distilbert-base-uncased-margin_3.0-2023-12-15_23-15-53

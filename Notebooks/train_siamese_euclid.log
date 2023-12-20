@@ -1,0 +1,331 @@
+03-Dec-23 14:03:44 - Namespace(train_batch_size=64, max_seq_length=300, model_name='distilbert-base-uncased', max_passages=0, epochs=3, pooling='mean', negs_to_use=None, warmup_steps=0, lr=2e-05, num_negs_per_system=5, use_pre_trained_model=False, use_all_queries=False, ce_score_margin=3.0, evaluation_steps=1000)
+03-Dec-23 14:03:44 - Create new SBERT model
+03-Dec-23 14:03:47 - Use pytorch device: cuda
+03-Dec-23 14:03:47 - Read corpus: collection.tsv
+03-Dec-23 14:04:02 - Load CrossEncoder scores dict
+03-Dec-23 14:04:40 - Read hard negatives train file
+03-Dec-23 14:04:40 - Using negatives from the following systems: bm25, msmarco-distilbert-base-tas-b, msmarco-distilbert-base-v3, msmarco-MiniLM-L-6-v3, distilbert-margin_mse-cls-dot-v2, distilbert-margin_mse-cls-dot-v1, distilbert-margin_mse-mean-dot-v1, mpnet-margin_mse-mean-v1, co-condenser-margin_mse-cls-v1, distilbert-margin_mse-mnrl-mean-v1, distilbert-margin_mse-sym_mnrl-mean-v1, distilbert-margin_mse-sym_mnrl-mean-v2, co-condenser-margin_mse-sym_mnrl-mean-v1
+03-Dec-23 14:06:44 - Train queries: 499184
+03-Dec-23 14:06:45 - Total examples: 6246901
+03-Dec-23 14:08:59 - Mean loss for training step 1000 :  0.4877236475795507
+03-Dec-23 14:11:07 - Mean loss for training step 2000 :  0.11927595480531454
+03-Dec-23 14:13:14 - Mean loss for training step 3000 :  0.11415499651432037
+03-Dec-23 14:15:20 - Mean loss for training step 4000 :  0.10978628543019295
+03-Dec-23 14:17:25 - Mean loss for training step 5000 :  0.10703338668495417
+03-Dec-23 14:19:31 - Mean loss for training step 6000 :  0.10450190690904856
+03-Dec-23 14:21:37 - Mean loss for training step 7000 :  0.10223037465661765
+03-Dec-23 14:23:43 - Mean loss for training step 8000 :  0.10101065355539322
+03-Dec-23 14:25:50 - Mean loss for training step 9000 :  0.0985383129939437
+03-Dec-23 14:27:56 - Mean loss for training step 10000 :  0.096691741630435
+03-Dec-23 14:27:56 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/10000
+03-Dec-23 14:30:02 - Mean loss for training step 11000 :  0.09588404729962349
+03-Dec-23 14:32:08 - Mean loss for training step 12000 :  0.09451524310931564
+03-Dec-23 14:34:14 - Mean loss for training step 13000 :  0.09239416858926415
+03-Dec-23 14:36:19 - Mean loss for training step 14000 :  0.0918977974280715
+03-Dec-23 14:38:25 - Mean loss for training step 15000 :  0.09106471424177288
+03-Dec-23 14:40:32 - Mean loss for training step 16000 :  0.09033616092801094
+03-Dec-23 14:42:37 - Mean loss for training step 17000 :  0.08891464189812541
+03-Dec-23 14:44:43 - Mean loss for training step 18000 :  0.08812451767921448
+03-Dec-23 14:46:49 - Mean loss for training step 19000 :  0.08783391138911248
+03-Dec-23 14:48:55 - Mean loss for training step 20000 :  0.08708450814709068
+03-Dec-23 14:48:55 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/20000
+03-Dec-23 14:51:02 - Mean loss for training step 21000 :  0.08557954436913133
+03-Dec-23 14:53:08 - Mean loss for training step 22000 :  0.0859339081980288
+03-Dec-23 14:55:14 - Mean loss for training step 23000 :  0.08471423499658703
+03-Dec-23 14:57:20 - Mean loss for training step 24000 :  0.0858738402351737
+03-Dec-23 14:59:26 - Mean loss for training step 25000 :  0.08325599392876029
+03-Dec-23 15:01:32 - Mean loss for training step 26000 :  0.08431760601699352
+03-Dec-23 15:03:39 - Mean loss for training step 27000 :  0.08268723879382014
+03-Dec-23 15:05:45 - Mean loss for training step 28000 :  0.08244984295964242
+03-Dec-23 15:07:51 - Mean loss for training step 29000 :  0.08153073975816369
+03-Dec-23 15:09:57 - Mean loss for training step 30000 :  0.0812064735814929
+03-Dec-23 15:09:57 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/30000
+03-Dec-23 15:12:03 - Mean loss for training step 31000 :  0.08159938690811396
+03-Dec-23 15:14:09 - Mean loss for training step 32000 :  0.08084445294737816
+03-Dec-23 15:16:16 - Mean loss for training step 33000 :  0.08034320960193872
+03-Dec-23 15:18:22 - Mean loss for training step 34000 :  0.07929397145286203
+03-Dec-23 15:20:26 - Mean loss for training step 35000 :  0.08050667424872518
+03-Dec-23 15:22:33 - Mean loss for training step 36000 :  0.08057296822592616
+03-Dec-23 15:24:38 - Mean loss for training step 37000 :  0.07999513342604041
+03-Dec-23 15:26:44 - Mean loss for training step 38000 :  0.0791539220251143
+03-Dec-23 15:28:50 - Mean loss for training step 39000 :  0.07891452228277922
+03-Dec-23 15:30:56 - Mean loss for training step 40000 :  0.07824605908244849
+03-Dec-23 15:30:56 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/40000
+03-Dec-23 15:33:03 - Mean loss for training step 41000 :  0.07814550419896842
+03-Dec-23 15:35:08 - Mean loss for training step 42000 :  0.07834855000302196
+03-Dec-23 15:37:14 - Mean loss for training step 43000 :  0.07761853092908859
+03-Dec-23 15:39:19 - Mean loss for training step 44000 :  0.07778728380054235
+03-Dec-23 15:41:24 - Mean loss for training step 45000 :  0.07752028385549783
+03-Dec-23 15:43:30 - Mean loss for training step 46000 :  0.07727649795264005
+03-Dec-23 15:45:36 - Mean loss for training step 47000 :  0.07661034093052149
+03-Dec-23 15:47:41 - Mean loss for training step 48000 :  0.07663756082952022
+03-Dec-23 15:49:47 - Mean loss for training step 49000 :  0.07752437406778336
+03-Dec-23 15:51:52 - Mean loss for training step 50000 :  0.07621558810397983
+03-Dec-23 15:51:52 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/50000
+03-Dec-23 15:53:58 - Mean loss for training step 51000 :  0.07641313907876611
+03-Dec-23 15:56:04 - Mean loss for training step 52000 :  0.07603735506534576
+03-Dec-23 15:58:10 - Mean loss for training step 53000 :  0.07509258719161153
+03-Dec-23 16:00:15 - Mean loss for training step 54000 :  0.07501247050985695
+03-Dec-23 16:02:20 - Mean loss for training step 55000 :  0.07556720038503409
+03-Dec-23 16:04:25 - Mean loss for training step 56000 :  0.07630729207769037
+03-Dec-23 16:06:31 - Mean loss for training step 57000 :  0.07504467822983861
+03-Dec-23 16:08:36 - Mean loss for training step 58000 :  0.07442740246653556
+03-Dec-23 16:10:42 - Mean loss for training step 59000 :  0.0743123899884522
+03-Dec-23 16:12:47 - Mean loss for training step 60000 :  0.07492867347970605
+03-Dec-23 16:12:47 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/60000
+03-Dec-23 16:14:53 - Mean loss for training step 61000 :  0.07424326899275184
+03-Dec-23 16:16:58 - Mean loss for training step 62000 :  0.07471163626387715
+03-Dec-23 16:19:03 - Mean loss for training step 63000 :  0.07432533561065793
+03-Dec-23 16:21:07 - Mean loss for training step 64000 :  0.07392217541486025
+03-Dec-23 16:23:13 - Mean loss for training step 65000 :  0.07345631643384695
+03-Dec-23 16:25:18 - Mean loss for training step 66000 :  0.07405173476040364
+03-Dec-23 16:27:23 - Mean loss for training step 67000 :  0.07407081371918321
+03-Dec-23 16:29:29 - Mean loss for training step 68000 :  0.07402128317952156
+03-Dec-23 16:31:34 - Mean loss for training step 69000 :  0.07377901739627123
+03-Dec-23 16:33:39 - Mean loss for training step 70000 :  0.07311653659120201
+03-Dec-23 16:33:39 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/70000
+03-Dec-23 16:35:46 - Mean loss for training step 71000 :  0.07371149507910013
+03-Dec-23 16:37:50 - Mean loss for training step 72000 :  0.07350603911653161
+03-Dec-23 16:39:56 - Mean loss for training step 73000 :  0.07356038806587457
+03-Dec-23 16:42:01 - Mean loss for training step 74000 :  0.07315506422892212
+03-Dec-23 16:44:06 - Mean loss for training step 75000 :  0.07324730377271771
+03-Dec-23 16:46:13 - Mean loss for training step 76000 :  0.07379438849911094
+03-Dec-23 16:48:17 - Mean loss for training step 77000 :  0.07288386071845888
+03-Dec-23 16:50:22 - Mean loss for training step 78000 :  0.0722298535965383
+03-Dec-23 16:52:28 - Mean loss for training step 79000 :  0.07231356925144791
+03-Dec-23 16:54:32 - Mean loss for training step 80000 :  0.07242898062244058
+03-Dec-23 16:54:32 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/80000
+03-Dec-23 16:56:39 - Mean loss for training step 81000 :  0.07258065651357173
+03-Dec-23 16:58:44 - Mean loss for training step 82000 :  0.07167290115356445
+03-Dec-23 17:00:49 - Mean loss for training step 83000 :  0.0719562153108418
+03-Dec-23 17:02:55 - Mean loss for training step 84000 :  0.07147273748740554
+03-Dec-23 17:05:01 - Mean loss for training step 85000 :  0.07255648113042117
+03-Dec-23 17:07:05 - Mean loss for training step 86000 :  0.07116234524548054
+03-Dec-23 17:09:12 - Mean loss for training step 87000 :  0.07147998116910458
+03-Dec-23 17:11:17 - Mean loss for training step 88000 :  0.07112481486424804
+03-Dec-23 17:13:21 - Mean loss for training step 89000 :  0.07066542993858457
+03-Dec-23 17:15:27 - Mean loss for training step 90000 :  0.07136726822704077
+03-Dec-23 17:15:27 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/90000
+03-Dec-23 17:17:32 - Mean loss for training step 91000 :  0.07147021055221557
+03-Dec-23 17:19:38 - Mean loss for training step 92000 :  0.07098608111217618
+03-Dec-23 17:21:44 - Mean loss for training step 93000 :  0.07065149892494083
+03-Dec-23 17:23:49 - Mean loss for training step 94000 :  0.07108636216819286
+03-Dec-23 17:25:54 - Mean loss for training step 95000 :  0.07075346469506621
+03-Dec-23 17:27:59 - Mean loss for training step 96000 :  0.07051173176243901
+03-Dec-23 17:30:05 - Mean loss for training step 97000 :  0.07054334897175431
+03-Dec-23 17:33:27 - Mean loss for training step 1000 :  0.06608452347666025
+03-Dec-23 17:35:32 - Mean loss for training step 2000 :  0.06689755103364586
+03-Dec-23 17:36:21 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/100000
+03-Dec-23 17:37:38 - Mean loss for training step 3000 :  0.06638049259781838
+03-Dec-23 17:39:43 - Mean loss for training step 4000 :  0.06694232090562582
+03-Dec-23 17:41:48 - Mean loss for training step 5000 :  0.06645512539520859
+03-Dec-23 17:43:53 - Mean loss for training step 6000 :  0.06655647408775986
+03-Dec-23 17:45:59 - Mean loss for training step 7000 :  0.06674385927058757
+03-Dec-23 17:48:04 - Mean loss for training step 8000 :  0.06691593459993601
+03-Dec-23 17:50:10 - Mean loss for training step 9000 :  0.06698621404916048
+03-Dec-23 17:52:15 - Mean loss for training step 10000 :  0.06618001045286656
+03-Dec-23 17:54:21 - Mean loss for training step 11000 :  0.06655883919075131
+03-Dec-23 17:56:26 - Mean loss for training step 12000 :  0.06620633267238736
+03-Dec-23 17:57:15 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/110000
+03-Dec-23 17:58:31 - Mean loss for training step 13000 :  0.0664659694172442
+03-Dec-23 18:00:37 - Mean loss for training step 14000 :  0.06652783231437207
+03-Dec-23 18:02:42 - Mean loss for training step 15000 :  0.06633852147310972
+03-Dec-23 18:04:47 - Mean loss for training step 16000 :  0.06638184345513583
+03-Dec-23 18:06:52 - Mean loss for training step 17000 :  0.06580007385089993
+03-Dec-23 18:08:57 - Mean loss for training step 18000 :  0.06733056541904807
+03-Dec-23 18:11:03 - Mean loss for training step 19000 :  0.06639311808720232
+03-Dec-23 18:13:08 - Mean loss for training step 20000 :  0.0665825673416257
+03-Dec-23 18:15:13 - Mean loss for training step 21000 :  0.06626293689385057
+03-Dec-23 18:17:18 - Mean loss for training step 22000 :  0.065964583594352
+03-Dec-23 18:18:06 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/120000
+03-Dec-23 18:19:23 - Mean loss for training step 23000 :  0.06610964216478168
+03-Dec-23 18:21:29 - Mean loss for training step 24000 :  0.06644889326766133
+03-Dec-23 18:23:34 - Mean loss for training step 25000 :  0.06653743846341968
+03-Dec-23 18:25:39 - Mean loss for training step 26000 :  0.06611588610708713
+03-Dec-23 18:27:44 - Mean loss for training step 27000 :  0.06587850401923061
+03-Dec-23 18:29:49 - Mean loss for training step 28000 :  0.06606544644385576
+03-Dec-23 18:31:54 - Mean loss for training step 29000 :  0.06592233193293214
+03-Dec-23 18:33:59 - Mean loss for training step 30000 :  0.0655190104842186
+03-Dec-23 18:36:04 - Mean loss for training step 31000 :  0.06563960397988558
+03-Dec-23 18:38:10 - Mean loss for training step 32000 :  0.06623553909733891
+03-Dec-23 18:38:59 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/130000
+03-Dec-23 18:40:16 - Mean loss for training step 33000 :  0.06590834031067788
+03-Dec-23 18:42:21 - Mean loss for training step 34000 :  0.0651453705150634
+03-Dec-23 18:44:26 - Mean loss for training step 35000 :  0.065579907823354
+03-Dec-23 18:46:32 - Mean loss for training step 36000 :  0.06594227251596749
+03-Dec-23 18:48:37 - Mean loss for training step 37000 :  0.0656042548455298
+03-Dec-23 18:50:42 - Mean loss for training step 38000 :  0.06548785684630275
+03-Dec-23 18:52:46 - Mean loss for training step 39000 :  0.06544812914729119
+03-Dec-23 18:54:51 - Mean loss for training step 40000 :  0.0657153778206557
+03-Dec-23 18:56:56 - Mean loss for training step 41000 :  0.06595539556443691
+03-Dec-23 18:59:01 - Mean loss for training step 42000 :  0.06482618246972562
+03-Dec-23 18:59:49 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/140000
+03-Dec-23 19:01:05 - Mean loss for training step 43000 :  0.06546179738268257
+03-Dec-23 19:03:11 - Mean loss for training step 44000 :  0.06568743239343167
+03-Dec-23 19:05:16 - Mean loss for training step 45000 :  0.06532661170512438
+03-Dec-23 19:07:20 - Mean loss for training step 46000 :  0.06520300994440913
+03-Dec-23 19:09:26 - Mean loss for training step 47000 :  0.06549530815146863
+03-Dec-23 19:11:30 - Mean loss for training step 48000 :  0.06516265120729804
+03-Dec-23 19:13:35 - Mean loss for training step 49000 :  0.06527114994451404
+03-Dec-23 19:15:40 - Mean loss for training step 50000 :  0.06482089065015316
+03-Dec-23 19:17:46 - Mean loss for training step 51000 :  0.06540574076026678
+03-Dec-23 19:19:51 - Mean loss for training step 52000 :  0.06524107890203595
+03-Dec-23 19:20:40 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/150000
+03-Dec-23 19:21:57 - Mean loss for training step 53000 :  0.06500432690605522
+03-Dec-23 19:24:04 - Mean loss for training step 54000 :  0.06477286786586046
+03-Dec-23 19:26:08 - Mean loss for training step 55000 :  0.06503537700138987
+03-Dec-23 19:28:14 - Mean loss for training step 56000 :  0.06505582642182708
+03-Dec-23 19:30:18 - Mean loss for training step 57000 :  0.06432316119968891
+03-Dec-23 19:32:23 - Mean loss for training step 58000 :  0.06501312926411629
+03-Dec-23 19:34:28 - Mean loss for training step 59000 :  0.06473980051279069
+03-Dec-23 19:36:34 - Mean loss for training step 60000 :  0.06454815242439509
+03-Dec-23 19:38:39 - Mean loss for training step 61000 :  0.06457397246733308
+03-Dec-23 19:40:45 - Mean loss for training step 62000 :  0.0641621622480452
+03-Dec-23 19:41:34 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/160000
+03-Dec-23 19:42:51 - Mean loss for training step 63000 :  0.06469989482313394
+03-Dec-23 19:44:56 - Mean loss for training step 64000 :  0.06446279985643923
+03-Dec-23 19:47:01 - Mean loss for training step 65000 :  0.06498880045115948
+03-Dec-23 19:49:07 - Mean loss for training step 66000 :  0.06467864513024688
+03-Dec-23 19:51:12 - Mean loss for training step 67000 :  0.06464913116022944
+03-Dec-23 19:53:17 - Mean loss for training step 68000 :  0.06421771176531911
+03-Dec-23 19:55:22 - Mean loss for training step 69000 :  0.06489062833040952
+03-Dec-23 19:57:27 - Mean loss for training step 70000 :  0.06401766641810537
+03-Dec-23 19:59:32 - Mean loss for training step 71000 :  0.06414834139123558
+03-Dec-23 20:01:38 - Mean loss for training step 72000 :  0.06433726025745273
+03-Dec-23 20:02:27 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/170000
+03-Dec-23 20:03:44 - Mean loss for training step 73000 :  0.06416534340754151
+03-Dec-23 20:05:49 - Mean loss for training step 74000 :  0.06415075739473104
+03-Dec-23 20:07:54 - Mean loss for training step 75000 :  0.0639552468508482
+03-Dec-23 20:09:59 - Mean loss for training step 76000 :  0.06409388134256006
+03-Dec-23 20:12:05 - Mean loss for training step 77000 :  0.06415468575060368
+03-Dec-23 20:14:10 - Mean loss for training step 78000 :  0.06430732955224812
+03-Dec-23 20:16:15 - Mean loss for training step 79000 :  0.06378522967174649
+03-Dec-23 20:18:20 - Mean loss for training step 80000 :  0.06389892867766321
+03-Dec-23 20:20:26 - Mean loss for training step 81000 :  0.0642939582131803
+03-Dec-23 20:22:30 - Mean loss for training step 82000 :  0.06335440420918166
+03-Dec-23 20:23:20 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/180000
+03-Dec-23 20:24:37 - Mean loss for training step 83000 :  0.06458210578560829
+03-Dec-23 20:26:42 - Mean loss for training step 84000 :  0.06452998031303286
+03-Dec-23 20:28:47 - Mean loss for training step 85000 :  0.06404535934329032
+03-Dec-23 20:30:52 - Mean loss for training step 86000 :  0.06334757128357887
+03-Dec-23 20:32:57 - Mean loss for training step 87000 :  0.0639306623376906
+03-Dec-23 20:35:02 - Mean loss for training step 88000 :  0.06395585824549198
+03-Dec-23 20:37:07 - Mean loss for training step 89000 :  0.06372187534347176
+03-Dec-23 20:39:13 - Mean loss for training step 90000 :  0.06373872659914195
+03-Dec-23 20:41:18 - Mean loss for training step 91000 :  0.06380463744699955
+03-Dec-23 20:43:23 - Mean loss for training step 92000 :  0.06346149859763682
+03-Dec-23 20:44:12 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/190000
+03-Dec-23 20:45:29 - Mean loss for training step 93000 :  0.06332669369876384
+03-Dec-23 20:47:34 - Mean loss for training step 94000 :  0.06394702408276498
+03-Dec-23 20:49:39 - Mean loss for training step 95000 :  0.06340484685078264
+03-Dec-23 20:51:44 - Mean loss for training step 96000 :  0.06340813499316574
+03-Dec-23 20:53:49 - Mean loss for training step 97000 :  0.0636288367472589
+03-Dec-23 20:57:11 - Mean loss for training step 1000 :  0.059451806617900727
+03-Dec-23 20:59:16 - Mean loss for training step 2000 :  0.059498043021187184
+03-Dec-23 21:01:21 - Mean loss for training step 3000 :  0.0593666124381125
+03-Dec-23 21:03:25 - Mean loss for training step 4000 :  0.059585332321003076
+03-Dec-23 21:05:03 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/200000
+03-Dec-23 21:05:31 - Mean loss for training step 5000 :  0.05889767039753497
+03-Dec-23 21:07:36 - Mean loss for training step 6000 :  0.05950911721214652
+03-Dec-23 21:09:40 - Mean loss for training step 7000 :  0.05927334711141884
+03-Dec-23 21:11:46 - Mean loss for training step 8000 :  0.05943533488176763
+03-Dec-23 21:13:50 - Mean loss for training step 9000 :  0.05961998681351542
+03-Dec-23 21:15:57 - Mean loss for training step 10000 :  0.05957151341624558
+03-Dec-23 21:18:02 - Mean loss for training step 11000 :  0.059002672059461476
+03-Dec-23 21:20:07 - Mean loss for training step 12000 :  0.059201605062931775
+03-Dec-23 21:22:12 - Mean loss for training step 13000 :  0.05923305169865489
+03-Dec-23 21:24:18 - Mean loss for training step 14000 :  0.059299860123544934
+03-Dec-23 21:25:56 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/210000
+03-Dec-23 21:26:23 - Mean loss for training step 15000 :  0.0596327992901206
+03-Dec-23 21:28:29 - Mean loss for training step 16000 :  0.05991056331247091
+03-Dec-23 21:30:34 - Mean loss for training step 17000 :  0.05939711849577725
+03-Dec-23 21:32:39 - Mean loss for training step 18000 :  0.05962166385538876
+03-Dec-23 21:34:44 - Mean loss for training step 19000 :  0.0594476071447134
+03-Dec-23 21:36:48 - Mean loss for training step 20000 :  0.05935134175978601
+03-Dec-23 21:38:53 - Mean loss for training step 21000 :  0.05951301807537675
+03-Dec-23 21:40:58 - Mean loss for training step 22000 :  0.05920866916514933
+03-Dec-23 21:43:04 - Mean loss for training step 23000 :  0.05907958933338523
+03-Dec-23 21:45:09 - Mean loss for training step 24000 :  0.059293203080073
+03-Dec-23 21:46:48 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/220000
+03-Dec-23 21:47:15 - Mean loss for training step 25000 :  0.05996443772315979
+03-Dec-23 21:49:21 - Mean loss for training step 26000 :  0.05956805645115674
+03-Dec-23 21:51:26 - Mean loss for training step 27000 :  0.05944937925040722
+03-Dec-23 21:53:31 - Mean loss for training step 28000 :  0.05928965057246387
+03-Dec-23 21:55:35 - Mean loss for training step 29000 :  0.059137871235609055
+03-Dec-23 21:57:40 - Mean loss for training step 30000 :  0.05960729835927486
+03-Dec-23 21:59:44 - Mean loss for training step 31000 :  0.05940542962029576
+03-Dec-23 22:01:49 - Mean loss for training step 32000 :  0.059057960744947194
+03-Dec-23 22:03:54 - Mean loss for training step 33000 :  0.05937137380242348
+03-Dec-23 22:06:00 - Mean loss for training step 34000 :  0.05866667552292347
+03-Dec-23 22:07:38 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/230000
+03-Dec-23 22:08:06 - Mean loss for training step 35000 :  0.059488187961280345
+03-Dec-23 22:10:11 - Mean loss for training step 36000 :  0.05915616298094392
+03-Dec-23 22:12:17 - Mean loss for training step 37000 :  0.05884642401896417
+03-Dec-23 22:14:23 - Mean loss for training step 38000 :  0.059713990591466426
+03-Dec-23 22:16:28 - Mean loss for training step 39000 :  0.05913943289034069
+03-Dec-23 22:18:33 - Mean loss for training step 40000 :  0.059554229259490964
+03-Dec-23 22:20:40 - Mean loss for training step 41000 :  0.059341008188202975
+03-Dec-23 22:22:45 - Mean loss for training step 42000 :  0.05918335401825607
+03-Dec-23 22:24:50 - Mean loss for training step 43000 :  0.05876810178160667
+03-Dec-23 22:26:56 - Mean loss for training step 44000 :  0.05930221333540976
+03-Dec-23 22:28:34 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/240000
+03-Dec-23 22:29:01 - Mean loss for training step 45000 :  0.05949646847695112
+03-Dec-23 22:31:08 - Mean loss for training step 46000 :  0.059090295229107144
+03-Dec-23 22:33:13 - Mean loss for training step 47000 :  0.05863978697732091
+03-Dec-23 22:35:18 - Mean loss for training step 48000 :  0.05942686281166971
+03-Dec-23 22:37:24 - Mean loss for training step 49000 :  0.05934296037256718
+03-Dec-23 22:39:28 - Mean loss for training step 50000 :  0.05955546608939767
+03-Dec-23 22:41:33 - Mean loss for training step 51000 :  0.0594570919200778
+03-Dec-23 22:43:38 - Mean loss for training step 52000 :  0.05959020104259252
+03-Dec-23 22:45:43 - Mean loss for training step 53000 :  0.059240043370053175
+03-Dec-23 22:47:46 - Mean loss for training step 54000 :  0.05904955653846264
+03-Dec-23 22:49:24 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/250000
+03-Dec-23 22:49:52 - Mean loss for training step 55000 :  0.059455286875367164
+03-Dec-23 22:51:57 - Mean loss for training step 56000 :  0.059516912825405596
+03-Dec-23 22:54:02 - Mean loss for training step 57000 :  0.05862632343173027
+03-Dec-23 22:56:07 - Mean loss for training step 58000 :  0.06003719851747155
+03-Dec-23 22:58:11 - Mean loss for training step 59000 :  0.058897644232958554
+03-Dec-23 23:00:16 - Mean loss for training step 60000 :  0.058441855328157544
+03-Dec-23 23:02:21 - Mean loss for training step 61000 :  0.058962858013808725
+03-Dec-23 23:04:26 - Mean loss for training step 62000 :  0.059017495170235634
+03-Dec-23 23:06:31 - Mean loss for training step 63000 :  0.05899429637938738
+03-Dec-23 23:08:36 - Mean loss for training step 64000 :  0.058995059449225666
+03-Dec-23 23:10:15 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/260000
+03-Dec-23 23:10:43 - Mean loss for training step 65000 :  0.05894529690593481
+03-Dec-23 23:12:47 - Mean loss for training step 66000 :  0.05849655088782311
+03-Dec-23 23:14:53 - Mean loss for training step 67000 :  0.05873666148632765
+03-Dec-23 23:16:58 - Mean loss for training step 68000 :  0.058773007038980724
+03-Dec-23 23:19:03 - Mean loss for training step 69000 :  0.05942745600268245
+03-Dec-23 23:21:08 - Mean loss for training step 70000 :  0.05908220400847495
+03-Dec-23 23:23:13 - Mean loss for training step 71000 :  0.0580656416900456
+03-Dec-23 23:25:18 - Mean loss for training step 72000 :  0.05860467346571386
+03-Dec-23 23:27:24 - Mean loss for training step 73000 :  0.05847208330594003
+03-Dec-23 23:29:30 - Mean loss for training step 74000 :  0.05963054684735834
+03-Dec-23 23:31:09 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/270000
+03-Dec-23 23:31:36 - Mean loss for training step 75000 :  0.058814903646707536
+03-Dec-23 23:33:41 - Mean loss for training step 76000 :  0.05891951884329319
+03-Dec-23 23:35:46 - Mean loss for training step 77000 :  0.05871099071204662
+03-Dec-23 23:37:51 - Mean loss for training step 78000 :  0.05896741650998592
+03-Dec-23 23:39:57 - Mean loss for training step 79000 :  0.059250062089413406
+03-Dec-23 23:42:02 - Mean loss for training step 80000 :  0.05865963015332818
+03-Dec-23 23:44:08 - Mean loss for training step 81000 :  0.05852486472949386
+03-Dec-23 23:46:12 - Mean loss for training step 82000 :  0.05894482660293579
+03-Dec-23 23:48:18 - Mean loss for training step 83000 :  0.058806187251582744
+03-Dec-23 23:50:23 - Mean loss for training step 84000 :  0.058947498332709077
+03-Dec-23 23:52:00 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/280000
+03-Dec-23 23:52:28 - Mean loss for training step 85000 :  0.05853558924235404
+03-Dec-23 23:54:33 - Mean loss for training step 86000 :  0.05899168139882386
+03-Dec-23 23:56:38 - Mean loss for training step 87000 :  0.05856558078154921
+03-Dec-23 23:58:42 - Mean loss for training step 88000 :  0.058755420472472904
+04-Dec-23 00:00:47 - Mean loss for training step 89000 :  0.058610890163108706
+04-Dec-23 00:02:52 - Mean loss for training step 90000 :  0.05884784273989498
+04-Dec-23 00:04:56 - Mean loss for training step 91000 :  0.05834746521152556
+04-Dec-23 00:07:02 - Mean loss for training step 92000 :  0.05899948527663946
+04-Dec-23 00:09:06 - Mean loss for training step 93000 :  0.059142144788056614
+04-Dec-23 00:11:11 - Mean loss for training step 94000 :  0.058305559607222675
+04-Dec-23 00:12:50 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/290000
+04-Dec-23 00:13:17 - Mean loss for training step 95000 :  0.05868634701892734
+04-Dec-23 00:15:22 - Mean loss for training step 96000 :  0.05928544399142265
+04-Dec-23 00:17:28 - Mean loss for training step 97000 :  0.05834499832801521
+04-Dec-23 00:18:44 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47/292821
+04-Dec-23 00:18:45 - Save model to output/train_siamese_sbert-distilbert-base-uncased-batch_size_64-2023-12-03_14-03-47
