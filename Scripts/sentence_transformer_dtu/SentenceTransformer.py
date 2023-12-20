@@ -1,3 +1,12 @@
+"""
+The structure of our data pipeline and modelling approach has been based off of
+the work by UKPLab based in Germany. Their repository may be found here: 
+https://github.com/UKPLab/sentence-transformers. We have adapted code from
+this repository to be used for our project.
+
+This script has been adapted for our project but is based off of a similar script from UKPLab.
+"""
+
 import json
 import logging
 import os
