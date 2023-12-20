@@ -1,18 +1,11 @@
 """
-This examples show how to train a Bi-Encoder for the MS Marco dataset (https://github.com/microsoft/MSMARCO-Passage-Ranking).
+The structure of our data pipeline and modelling approach has been based off of
+the work by UKPLab based in Germany. Their repository may be found here: 
+https://github.com/UKPLab/sentence-transformers. We have adapted code from
+this repository to be used for our project.
 
-The queries and passages are passed independently to the transformer network to produce fixed sized embeddings.
-These embeddings can then be compared using cosine-similarity to find matching passages for a given query.
-
-For training, we use MultipleNegativesRankingLoss. There, we pass triplets in the format:
-(query, positive_passage, negative_passage)
-
-Negative passage are hard negative examples, that were mined using different dense embedding methods and lexical search methods.
-Each positive and negative passage comes with a score from a Cross-Encoder. This allows denoising, i.e. removing false negative
-passages that are actually relevant for the query.
-
-With a distilbert-base-uncased model, it should achieve a performance of about 33.79 MRR@10 on the MSMARCO Passages Dev-Corpus
-
+In this script, we train our triplet model. This script has been adapted for 
+our project as well.
 """
 
 import sys
@@ -34,12 +27,6 @@ import argparse
 from TripletLoss import TripletLoss
 
 
-#### Just some code to print debug information to stdout
-# logging.basicConfig(format='%(asctime)s - %(message)s',
-#                     datefmt='%Y-%m-%d %H:%M:%S',
-#                     level=logging.INFO,
-#                     handlers=[LoggingHandler()])
-#### /print debug information to stdout
 logging.basicConfig(filename='train_triplet.log', filemode='w', format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S', level=logging.INFO)
 
 parser = argparse.ArgumentParser()
@@ -59,25 +46,6 @@ parser.add_argument("--ce_score_margin", default=3.0, type=float)
 parser.add_argument("--evaluation_steps", default=10000, type=int)
 parser.add_argument("--metric", default='cosine', type=str) #either cosine or euclidean
 args = parser.parse_args()
-
-# this class replaces the parsing of arguments passed to the .py scripts
-#class Args:
-    #def __init__(self):
-     #   self.train_batch_size = 64
-      #  self.max_seq_length = 300
-    #    self.model_name = "bert-base-uncased"
-     #   self.max_passages = 0
-      #  self.epochs = 10
-       # self.pooling = "mean"
-        #self.negs_to_use = None
-        #self.warmup_steps = 1000
-        #self.lr = 2e-5
-        #self.num_negs_per_system = 5
-        #self.use_pre_trained_model = False
-        #self.use_all_queries = False
-        #self.ce_score_margin = 3.0
-
-#args=Args()
 
 print(args)
 
@@ -143,6 +111,7 @@ with open(queries_filepath, 'r', encoding='utf8') as fIn:
         qid = int(qid)
         queries[qid] = query
 
+#for testing
 #unique_qids = set(queries.keys())
 #unique_pids = set(corpus.keys())
 
@@ -235,6 +204,7 @@ class MSMARCODataset(Dataset):
         self.positives = []
         self.negatives = []
         
+        #added query limit
         MAX_QUERIES = 125000
         
         for i, qid in enumerate(self.queries):

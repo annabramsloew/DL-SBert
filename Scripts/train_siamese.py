@@ -1,3 +1,13 @@
+"""
+The structure of our data pipeline and modelling approach has been based off of
+the work by UKPLab based in Germany. Their repository may be found here: 
+https://github.com/UKPLab/sentence-transformers. We have adapted code from
+this repository to be used for our project.
+
+In this script, we train our siamese model. This script has been adapted for 
+our project as well - it is based on the triplet model script.
+"""
+
 import sys
 import json
 from torch.utils.data import DataLoader
@@ -15,8 +25,6 @@ import pickle
 import argparse
 from CE_MSELoss import CE_MSELoss
 import numpy as np
-
-
 
 
 #### Just some code to print debug information to stdout
@@ -133,9 +141,11 @@ logging.info("Load CrossEncoder scores dict")
 with gzip.open(ce_scores_file, 'rb') as fIn:
     ce_scores = pickle.load(fIn)
 
+#added sigmoid function
 def sigmoid_np(x):
     return 1 / (1 + np.exp(-np.array(x)))
 
+#data pipeline created for Siamese model
 logging.info("Read hard negatives train file")
 hard_negatives_filepath = os.path.join(data_folder, 'msmarco-hard-negatives.jsonl.gz')
 train_queries = {}
@@ -194,53 +204,6 @@ with gzip.open(hard_negatives_filepath, 'rt') as fIn:
 logging.info("Train queries: {}".format(len(train_queries)))
 
 
-
-# We create a custom MSMARCO dataset that returns triplets (query, positive, negative)
-# on-the-fly based on the information from the mined-hard-negatives jsonl file.
-# class MSMARCODataset(Dataset):
-#     def __init__(self, query_corpus, passage_corpus, ce_scores):
-        
-#         logging.info("Loading data")
-#         query_ids = []
-#         passage_ids = []
-#         ce_scores_list = []
-#         query_total = len(ce_scores.keys())
-#         pct5_threshold = int(query_total*0.05)
-
-#         for i, qid in enumerate(ce_scores.keys()):
-#             if i > pct5_threshold:
-#                 continue
-#             passage_dict = ce_scores[qid]
-#             query_ids += [qid] * len(passage_dict)
-#             for pid in passage_dict:
-#                 passage_ids.append(pid)
-#                 ce_scores_list.append(passage_dict[pid])
-
-#         del ce_scores
-        
-#         self.queries = query_corpus
-#         self.queries_ids = query_ids
-#         self.passage_ids = passage_ids
-#         self.corpus = corpus
-#         self.ce_scores = [float(number) for number in sigmoid_np(ce_scores_list)]
-
-#     def __getitem__(self, item):
-
-#         # fetch relevant items
-#         passage_id = self.passage_ids[item]
-#         query_id = self.queries_ids[item]
-#         score = self.ce_scores[item]
-        
-#         # extract text of passage and queries
-#         query_text = self.queries[query_id]
-#         passage_text = self.corpus[passage_id]
-
-#         return InputExample(texts=[query_text, passage_text], label=score)
-
-#     def __len__(self):
-#         return len(self.passage_ids)
-
-
 # We create a custom MSMARCO dataset that returns triplets (query, positive, negative)
 # on-the-fly based on the information from the mined-hard-negatives jsonl file.
 class MSMARCODataset(Dataset):
@@ -252,7 +215,9 @@ class MSMARCODataset(Dataset):
         # make list to store the 
         self.anchors = []
         self.passages = []
-        MAX_QUERIES = 10000 #125000
+        
+        #added query limit
+        MAX_QUERIES = 125000 #125000
         for i, qid in enumerate(self.queries):
             if i >= MAX_QUERIES:
                 continue
@@ -288,9 +253,6 @@ class MSMARCODataset(Dataset):
 
     def __len__(self):
         return len(self.anchors)
-
-
-
 
 
 
