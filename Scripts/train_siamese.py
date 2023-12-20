@@ -39,6 +39,7 @@ parser.add_argument("--use_pre_trained_model", default=False, action="store_true
 parser.add_argument("--use_all_queries", default=False, action="store_true")
 parser.add_argument("--ce_score_margin", default=3.0, type=float)
 parser.add_argument("--evaluation_steps", default=10000, type=int)
+parser.add_argument("--metric", default='cosine', type=str) #either cosine or euclidean
 args = parser.parse_args()
 
 print(args)
@@ -296,7 +297,7 @@ class MSMARCODataset(Dataset):
 # For training the SentenceTransformer model, we need a dataset, a dataloader, and a loss used for training.
 train_dataset = MSMARCODataset(queries=train_queries, corpus=corpus, ce_scores=ce_scores)
 train_dataloader = DataLoader(train_dataset, shuffle=True, batch_size=train_batch_size)
-train_loss = CE_MSELoss(model=model)
+train_loss = CE_MSELoss(model=model, metric=args.metric)
 
 # Train the model
 model.fit(train_objectives=[(train_dataloader, train_loss)],

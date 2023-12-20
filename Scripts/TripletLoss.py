@@ -9,7 +9,7 @@ class TripletDistanceMetric(Enum):
     """
     The metric for the triplet loss
     """
-    COSINE = lambda x, y: 1 - F.cosine_similarity(x, y)
+    COSINE = lambda x, y: 1 - F.relu(F.cosine_similarity(x, y))
     EUCLIDEAN = lambda x, y: F.pairwise_distance(x, y, p=2)
     MANHATTAN = lambda x, y: F.pairwise_distance(x, y, p=1)
 
@@ -41,14 +41,23 @@ class TripletLoss(nn.Module):
         train_dataloader = DataLoader(train_dataset, shuffle=True, batch_size=train_batch_size)
         train_loss = losses.TripletLoss(model=model)
     """
-    def __init__(self, model: SentenceTransformer, distance_metric=TripletDistanceMetric.EUCLIDEAN, triplet_margin: float = 5):
+    def __init__(self, model: SentenceTransformer, metric='cosine', triplet_margin: float = 5):
         super(TripletLoss, self).__init__()
         self.model = model
+
+        if metric == 'cosine':
+            self.distance_metric=TripletDistanceMetric.COSINE
+        elif metric == 'euclidian':
+            self.distance_metric=TripletDistanceMetric.EUCLIDEAN
+        else:
+            break
+
         self.distance_metric = distance_metric
         self.triplet_margin = triplet_margin
 
 
     def get_config_dict(self):
+
         distance_metric_name = self.distance_metric.__name__
         for name, value in vars(TripletDistanceMetric).items():
             if value == self.distance_metric:
