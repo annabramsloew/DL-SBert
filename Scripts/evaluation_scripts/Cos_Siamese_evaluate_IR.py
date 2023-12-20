@@ -1,4 +1,12 @@
+"""
+The structure of our data pipeline and modelling approach has been based off of
+the work by UKPLab based in Germany. Their repository may be found here: 
+https://github.com/UKPLab/sentence-transformers. We have adapted code from
+this repository to be used for our project.
 
+In this script, we evaluate our Siamese model trained with cosine similarity. This script has been adapted for 
+our project as well.
+"""
 
 import sentence_transformers
 from sentence_transformers.evaluation import InformationRetrievalEvaluator
