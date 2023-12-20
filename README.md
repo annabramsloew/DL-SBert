@@ -1,4 +1,14 @@
 # Siamese vs. Triplet SBERT Networks for Information Retrieval
+## Repository Details
+
+The structure of our data pipeline and modelling approach has been based off of the work by UKPLab based in Germany. Their repository may be found here: https://github.com/UKPLab/sentence-transformers. We have adapted code from this repository to be used for our project.
+
+In this repository, the structure is as follows:
+- 
+
+
+guide til directory
+
 
 ## Project Summary
 
@@ -15,10 +25,3 @@ Notably, the Siamese model prefers training with cosine similarity, while Triple
 An excerpt of our results can be viwed below:
 
 ![PCA_and_results](https://github.com/annabramsloew/DL-SBert/assets/80269825/df5bb271-8917-469a-b4e1-204ebc20c1ee)
-
-## Repository Details
-
-The structure of our data pipeline and modelling approach has been based off of the work by UKPLab based in Germany. Their repository may be found here: https://github.com/UKPLab/sentence-transformers. We have adapted code from this repository to be used for our project.
-
-
-guide til directory
