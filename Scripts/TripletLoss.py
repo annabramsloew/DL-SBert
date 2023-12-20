@@ -1,3 +1,13 @@
+"""
+The structure of our data pipeline and modelling approach has been based off of
+the work by UKPLab based in Germany. Their repository may be found here: 
+https://github.com/UKPLab/sentence-transformers. We have adapted code from
+this repository to be used for our project.
+
+In this script, we define the loss functions for our triplet model. This script has been adapted for 
+our project as well.
+"""
+
 import torch
 from torch import nn, Tensor
 from typing import Union, Tuple, List, Iterable, Dict
@@ -23,23 +33,9 @@ class TripletLoss(nn.Module):
 
     Margin is an important hyperparameter and needs to be tuned respectively.
 
-    For further details, see: https://en.wikipedia.org/wiki/Triplet_loss
-
     :param model: SentenceTransformerModel
     :param distance_metric: Function to compute distance between two embeddings. The class TripletDistanceMetric contains common distance metrices that can be used.
     :param triplet_margin: The negative should be at least this much further away from the anchor than the positive.
-
-    Example::
-
-        from sentence_transformers import SentenceTransformer,  SentencesDataset, LoggingHandler, losses
-        from sentence_transformers.readers import InputExample
-
-        model = SentenceTransformer('distilbert-base-nli-mean-tokens')
-        train_examples = [InputExample(texts=['Anchor 1', 'Positive 1', 'Negative 1']),
-            InputExample(texts=['Anchor 2', 'Positive 2', 'Negative 2'])]
-        train_dataset = SentencesDataset(train_examples, model)
-        train_dataloader = DataLoader(train_dataset, shuffle=True, batch_size=train_batch_size)
-        train_loss = losses.TripletLoss(model=model)
     """
     def __init__(self, model: SentenceTransformer, metric='cosine', triplet_margin: float = 5):
         super(TripletLoss, self).__init__()
