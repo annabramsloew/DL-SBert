@@ -4,7 +4,8 @@
 The structure of our data pipeline and modelling approach has been based off of the work by UKPLab based in Germany. Their repository may be found here: https://github.com/UKPLab/sentence-transformers. We have adapted code from this repository to be used for our project.
 
 In this repository, the structure is as follows:
-- 
+* punkt 1
+*  
 
 
 guide til directory
