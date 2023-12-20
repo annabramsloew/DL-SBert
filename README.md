@@ -6,7 +6,6 @@ The structure of our data pipeline and modelling approach has been based off of 
 In this repository, the structure is as follows:
 * **Notebooks**: In this folder a summary notebook can be found, where the main results of the project is reproduced.
 *  **Scripts**: In this folder, all scripts for model training, evaluating and data orchestration can be found.
-*  **Jobscripts**: In this folder, examples of the jobscripts sent to the DTU Computing Cluster for training may be found.
 
 ## Project Summary
 
