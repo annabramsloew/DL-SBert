@@ -1,3 +1,13 @@
+"""
+The structure of our data pipeline and modelling approach has been based off of
+the work by UKPLab based in Germany. Their repository may be found here: 
+https://github.com/UKPLab/sentence-transformers. We have adapted code from
+this repository to be used for our project.
+
+In this script, we define the loss functions for the siamese model. This script has been adapted for 
+our project as well.
+"""
+
 from sentence_transformer_dtu import util
 import torch.nn.functional as F
 from torch import nn, Tensor
