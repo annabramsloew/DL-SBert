@@ -1,4 +1,4 @@
-wauw here is a guide
+# Siamese vs. Triplet SBERT Networks for Information Retrieval
 
 credits til andre
 
