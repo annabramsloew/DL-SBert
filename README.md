@@ -1,4 +1,4 @@
-![Network_architecture (1)](https://github.com/annabramsloew/DL-SBert/assets/80269825/660679d1-c3cc-4cb5-a214-d511cbdae3b1)# Siamese vs. Triplet SBERT Networks for Information Retrieval
+# Siamese vs. Triplet SBERT Networks for Information Retrieval
 
 credits til andre
 
